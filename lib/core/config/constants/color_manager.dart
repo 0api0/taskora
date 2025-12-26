@@ -15,15 +15,21 @@ class ColorManager {
 
   // TODO: Color text
   // primary
-  static const textPrimaryColor = Color(0xff1A2C62);
+  static const textPrimaryColor = Color(
+    0xff1A2C62,
+  ); // as a selected title form , title view
 
   // hint
-  static const textHintColor = Color(0xff64748B);
+  static const textHintColor = Color(
+    0xff64748B,
+  ); // as a hint in form , subTitle
 
   // secondary color text as a primary color app
 
   // default
-  static const textDarkColor = Color(0xff64748B);
+  static const textDarkColor = Color(
+    0xff1E293B,
+  ); // as a title form (not selected) , title body view
 
   // TODO: Color Status
   // red
