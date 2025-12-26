@@ -67,10 +67,12 @@ class AppStrings {
   static const String formName = 'Name';
   static const String formHintName = 'Enter Your Name';
   static const String formRememberMe = 'Remember me';
-  static const String formCreateAccount =
-      'Don\'t have an account? Create an account';
-  static const String formLogIn = 'Do you have an account? Log in';
-  static const String formReCode = 'Don’t receive code ?Resend code';
+  static const String formCreateAccountButton = ' Create an account';
+  static const String formCreateAccount = 'Don\'t have an account?';
+  static const String formLogInButton = ' Log in';
+  static const String formLogIn = 'Do you have an account?';
+  static const String formReCodeButton = ' Resend code';
+  static const String formReCode = 'Don’t receive code ?';
 
   // Form status mess
   static const String formEmailWrong =
