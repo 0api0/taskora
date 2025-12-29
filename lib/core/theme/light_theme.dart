@@ -50,6 +50,31 @@ class ThemeDataLight {
         ),
       ),
     ),
+
+    // text filed (input deco...)
+    inputDecorationTheme: InputDecorationTheme(
+      // Border states
+      border: _border(ColorManager.textHintColor),
+      enabledBorder: _border(ColorManager.textHintColor),
+      focusedBorder: _border(ColorManager.primaryColorApp),
+      errorBorder: _border(ColorManager.statusRedColor),
+      focusedErrorBorder: _border(ColorManager.statusRedColor),
+
+      // text style states
+      errorStyle: const TextStyle(
+        color: ColorManager.statusRedColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+      hintStyle: const TextStyle(
+        color: ColorManager.textHintColor,
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        height: 1.4,
+        letterSpacing: 0,
+      ),
+    ),
+
     // Text theme
     textTheme: TextTheme(
       // extra bold
@@ -99,3 +124,8 @@ class ThemeDataLight {
     ),
   );
 }
+
+OutlineInputBorder _border(Color color) => OutlineInputBorder(
+  borderRadius: BorderRadius.circular(6),
+  borderSide: BorderSide(color: color),
+);
