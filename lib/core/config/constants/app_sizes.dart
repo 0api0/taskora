@@ -1,5 +1,5 @@
 class AppSizes {
-  AppSizes._();
+  const AppSizes._();
 
   static const double heightButton = 48;
   static const double heightField = 44;

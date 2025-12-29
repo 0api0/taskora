@@ -15,11 +15,14 @@ class ButtonOutLine extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorManager.backgroundPrimaryColor,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: ColorManager.primaryColorApp),
+          side: const BorderSide(color: ColorManager.primaryColorApp),
           borderRadius: BorderRadiusGeometry.circular(4),
         ),
       ),
-      child: Text(text, style: TextStyle(color: ColorManager.primaryColorApp)),
+      child: Text(
+        text,
+        style: const TextStyle(color: ColorManager.primaryColorApp),
+      ),
     );
   }
 }

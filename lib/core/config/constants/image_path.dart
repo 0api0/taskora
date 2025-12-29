@@ -1,5 +1,5 @@
 class ImagePath {
-  ImagePath._();
+  const ImagePath._();
 
   static const String logo = 'assets/images/Logo.png';
   static const String onBoarding_1 = 'assets/images/On1.png';

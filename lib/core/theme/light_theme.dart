@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 
 class ThemeDataLight {
-  ThemeDataLight._();
+  const ThemeDataLight._();
 
   static const String fontFamily = 'Cairo';
 
@@ -76,7 +76,7 @@ class ThemeDataLight {
     ),
 
     // Text theme
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       // extra bold
       titleLarge: TextStyle(
         fontFamily: fontFamily,

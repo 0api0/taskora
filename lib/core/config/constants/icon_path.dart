@@ -1,5 +1,5 @@
 class IconPath {
-  IconPath._();
+  const IconPath._();
 
   // Profile
   static const String notifications = 'assets/icons/Frame 427319453.svg';

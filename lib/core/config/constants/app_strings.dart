@@ -1,5 +1,5 @@
 class AppStrings {
-  AppStrings._();
+  const AppStrings._();
 
   //TODO: App name
   static const String appName = 'Taskora';
