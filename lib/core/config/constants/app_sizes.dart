@@ -26,33 +26,4 @@ class AppSizes {
   static const double iconSmall = 16;
   static const double iconNormal = 24;
   static const double iconExtra = 54;
-
-  // text
-  static const int textTitle = 18;
-  static const int textTitleBody = 16;
-  static const int textTitleBodyExtra = 24;
-  static const int textSubTitle = 14;
-
-  // Field
-  static const int textTitleFieldDefault = 16;
-  static const int textTitleFieldSelected = 14;
-  static const int textHintField = 11;
-  static const int textRichButton = 10;
-  static const int textStatusField = 12;
-
-  // text profile
-  static const int textTitleProfile = 14;
-  static const int textSubTitleProfile = 10;
-
-  // Category
-  static const int textCategoryNormal = 16;
-  static const int textCategorySmall = 14;
-  static const int textCategoryMid = 12;
-  static const int textCategoryExtraSmall = 10;
-  static const int textCategoryExtraSmallX = 8;
-
-  // text button
-  static const int textButtonNavBar = 10;
-  static const int textButtonNormal = 16;
-  static const int textButtonSmall = 10;
 }
