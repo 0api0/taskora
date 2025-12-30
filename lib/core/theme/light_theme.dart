@@ -79,6 +79,7 @@ class ThemeDataLight {
     textTheme: const TextTheme(
       // extra bold
       titleLarge: TextStyle(
+        color: ColorManager.textPrimaryColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.w800,
         fontSize: 28,
@@ -87,6 +88,7 @@ class ThemeDataLight {
 
       // bold
       titleMedium: TextStyle(
+        color: ColorManager.textPrimaryColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.w700,
         fontSize: 18,
@@ -95,6 +97,7 @@ class ThemeDataLight {
 
       // Regular
       bodyLarge: TextStyle(
+        color: ColorManager.textPrimaryColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.w400,
         fontSize: 14,
@@ -103,6 +106,7 @@ class ThemeDataLight {
 
       // Medium
       bodyMedium: TextStyle(
+        color: ColorManager.textPrimaryColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.w500,
         fontSize: 12,
@@ -111,6 +115,7 @@ class ThemeDataLight {
 
       // small
       bodySmall: TextStyle(
+        color: ColorManager.textPrimaryColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.w500,
         fontSize: 8,
