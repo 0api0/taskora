@@ -82,7 +82,6 @@ class ThemeDataLight {
         fontFamily: fontFamily,
         fontWeight: FontWeight.w800,
         fontSize: 28,
-        height: 100 / 28,
         letterSpacing: 0,
       ),
 
@@ -91,7 +90,6 @@ class ThemeDataLight {
         fontFamily: fontFamily,
         fontWeight: FontWeight.w700,
         fontSize: 18,
-        height: 30 / 18,
         letterSpacing: 0,
       ),
 
@@ -100,7 +98,6 @@ class ThemeDataLight {
         fontFamily: fontFamily,
         fontWeight: FontWeight.w400,
         fontSize: 14,
-        height: 100 / 14,
         letterSpacing: 0,
       ),
 
@@ -109,7 +106,6 @@ class ThemeDataLight {
         fontFamily: fontFamily,
         fontWeight: FontWeight.w500,
         fontSize: 12,
-        height: 100 / 12,
         letterSpacing: 0,
       ),
 
@@ -118,7 +114,6 @@ class ThemeDataLight {
         fontFamily: fontFamily,
         fontWeight: FontWeight.w500,
         fontSize: 8,
-        height: 14 / 8,
         letterSpacing: 0,
       ),
     ),
