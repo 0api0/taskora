@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/app_strings.dart';
+import 'package:taskora/core/config/constants/image_path.dart';
 import 'package:taskora/core/theme/light_theme.dart';
-import 'core/config/widgets/custom_app_bar.dart';
-import 'core/config/widgets/custom_rich_text.dart';
+import 'core/config/widgets/custom_body_error.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,18 +18,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
-          child: Column(
-            children: [
-              const CustomAppBar(title: 'Create account'),
-              const SizedBox(height: 24),
-              CustomRichTextRow(
-                text: "Don't have an account? ",
-                actionText: "Create an account",
-                onTap: () {
-                  print('on tap *****************************************');
-                },
-              ),
-            ],
+          child: Center(
+            child: CustomBodyError(
+              image: ImagePath.internetError,
+              title: AppStrings.messgaesNoInternetConnection,
+              subTitle: AppStrings.messgaesSubNoInternetConnection,
+              textButton: AppStrings.buttonRetry,
+              textButtonOutline: AppStrings.buttonGoToSetting,
+              onPressed: () {},
+              onPressedOutline: () {},
+            ),
           ),
         ),
       ),

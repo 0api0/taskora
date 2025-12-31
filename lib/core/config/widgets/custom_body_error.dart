@@ -26,30 +26,30 @@ class CustomBodyError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Image.asset(image, width: 100, height: 100),
-          const SizedBox(height: AppSizes.spaceMedium),
-          Text(
-            title,
-            style: context.bold.copyWith(color: ColorManager.textDarkColor),
-          ),
-          const SizedBox(height: AppSizes.spaceSmallX),
-          Text(
-            subTitle,
-            style: context.regular.copyWith(color: ColorManager.textHintColor),
-          ),
-          const SizedBox(height: AppSizes.spaceLarge),
-          CustomButton(text: textButton, onPressed: onPressed),
-          const SizedBox(height: AppSizes.spaceSmall),
-          CustomButton(
-            text: textButtonOutline,
-            onPressed: onPressedOutline,
-            isOutline: true,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset(image, width: 100, height: 100),
+        const SizedBox(height: AppSizes.spaceMedium),
+        Text(
+          title,
+          style: context.bold.copyWith(color: ColorManager.textDarkColor),
+        ),
+        const SizedBox(height: AppSizes.spaceSmallX),
+        Text(
+          subTitle,
+          style: context.regular.copyWith(color: ColorManager.textHintColor),
+        ),
+        const SizedBox(height: AppSizes.spaceLarge),
+        CustomButton(text: textButton, onPressed: onPressed),
+        const SizedBox(height: AppSizes.spaceSmall),
+        CustomButton(
+          text: textButtonOutline,
+          onPressed: onPressedOutline,
+          isOutline: true,
+        ),
+      ],
     );
   }
 }
