@@ -26,4 +26,10 @@ class AppSizes {
   static const double iconSmall = 16;
   static const double iconNormal = 24;
   static const double iconExtra = 54;
+
+  //
+  static const double spaceSmall = 8;
+  static const double spaceSmallX = 4;
+  static const double spaceLarge = 36;
+  static const double spaceMedium = 22;
 }
