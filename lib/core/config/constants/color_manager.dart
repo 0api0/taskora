@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  ColorManager._();
+  const ColorManager._();
 
   // TODO: Color primary
   static const primaryColorApp = Color(0xff5B6CFF);
@@ -12,6 +12,8 @@ class ColorManager {
 
   // secondary as background for app ,  or for selected card
   static const backgroundSecondaryColor = Color(0xffEFF1FF);
+
+  static const backgroundDisable = Color(0xffC7D2FE);
 
   // TODO: Color text
   // primary
@@ -27,9 +29,7 @@ class ColorManager {
   // secondary color text as a primary color app
 
   // default
-  static const textDarkColor = Color(
-    0xff1E293B,
-  ); // as a title form (not selected) , title body view
+  static const textDarkColor = Color(0xff1E293B); //   // default
 
   // TODO: Color Status
   // red
