@@ -6,10 +6,14 @@ class OnboardingDotsIndicator extends StatelessWidget {
     super.key,
     required this.count,
     required this.currentIndex,
+    required this.activeColor,
+    required this.inactiveColor,
   });
 
   final int count;
   final int currentIndex;
+  final Color activeColor;
+  final Color inactiveColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +29,7 @@ class OnboardingDotsIndicator extends StatelessWidget {
           width: isActive ? 30 : 6,
           height: 6,
           decoration: BoxDecoration(
-            color: isActive
-                ? ColorManager.primaryColorApp
-                : ColorManager.primaryColorApp.withValues(alpha: 0.25),
+            color: isActive ? activeColor : inactiveColor,
             borderRadius: BorderRadius.circular(999),
           ),
         );
