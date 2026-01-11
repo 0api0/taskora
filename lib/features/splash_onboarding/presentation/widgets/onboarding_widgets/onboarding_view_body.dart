@@ -4,6 +4,8 @@ import 'package:taskora/core/config/constants/color_manager.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/onboarding_widgets/onboarding_view_placeholder.dart';
 
+import 'onboarding_dots_indicator.dart';
+
 const int kOnboardingPagesCount = 3;
 
 class OnboardingViewBody extends StatefulWidget {
@@ -74,6 +76,18 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           child: TextButton(
             onPressed: _isLastPage ? null : _skipToLast,
             child: Text(AppStrings.buttonSkip, style: context.medium),
+          ),
+        ),
+        // dotted
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 86,
+          child: Center(
+            child: OnboardingDotsIndicator(
+              count: kOnboardingPagesCount,
+              currentIndex: _currentIndex,
+            ),
           ),
         ),
         // Bottom button
