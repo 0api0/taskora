@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
+import 'package:taskora/features/splash_onboarding/domain/usecases/get_onboarding_pages_usecase.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/onboarding_widgets/onboarding_dots_indicator.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/onboarding_widgets/onboarding_view_placeholder.dart';
 
@@ -105,7 +106,11 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                   itemCount: kOnboardingPagesCount,
                   onPageChanged: _onPageChanged,
                   itemBuilder: (context, index) {
-                    return OnboardingPagePlaceholder(index: index);
+                    return OnboardingPagePlaceholder(
+                      index: index,
+                      onboardingPageEntity: const GetOnboardingPagesUseCase()
+                          .call()[index],
+                    );
                   },
                 ),
               ),
