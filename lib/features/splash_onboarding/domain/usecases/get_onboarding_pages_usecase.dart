@@ -22,6 +22,7 @@ class GetOnboardingPagesUseCase {
         title: AppStrings.onboardingView1Title,
         description: AppStrings.onboardingView1SubTitle,
         imagePath: ImagePath.onBoarding_3,
+        isDark: true,
       ),
     ];
   }
