@@ -29,6 +29,7 @@ class AppStrings {
 
   // projects & tasks
   static const String buttonSkipForNew = 'Skip for new';
+  static const String buttonSkip = 'Skip';
   static const String buttonAddProject = 'Add Project';
   static const String buttonAddTask = 'Add Task';
   static const String buttonCreateProject = 'Create Project ';
