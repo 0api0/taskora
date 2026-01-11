@@ -3,6 +3,7 @@ import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 import 'package:taskora/features/splash_onboarding/presentation/views/home_test.dart';
+import 'package:taskora/features/splash_onboarding/presentation/widgets/splash_widgets/shimmer.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -32,20 +33,22 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            ImagePath.logo,
-            width: 125,
-            height: 125,
-            fit: BoxFit.contain,
-          ),
-          Transform.translate(
-            offset: const Offset(0, -22),
-            child: Text(AppStrings.appName, style: context.extraBold),
-          ),
-        ],
+      child: Shimmer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              ImagePath.logo,
+              width: 125,
+              height: 125,
+              fit: BoxFit.contain,
+            ),
+            Transform.translate(
+              offset: const Offset(0, -22),
+              child: Text(AppStrings.appName, style: context.extraBold),
+            ),
+          ],
+        ),
       ),
     );
   }
