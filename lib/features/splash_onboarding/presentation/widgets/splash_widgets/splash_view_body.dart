@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
-import 'package:taskora/features/splash_onboarding/presentation/views/home_test.dart';
+import 'package:taskora/features/splash_onboarding/presentation/views/onboarding_view.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/splash_widgets/shimmer.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -24,9 +24,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       await Future.delayed(const Duration(milliseconds: 2000));
       if (!mounted) return;
 
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeTest()));
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const OnboardingView()),
+      );
     });
   }
 
