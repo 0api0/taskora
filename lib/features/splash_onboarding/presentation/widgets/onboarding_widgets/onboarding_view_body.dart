@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
-import 'package:taskora/core/extensions/text_style_extension.dart';
-import 'package:taskora/features/splash_onboarding/domain/usecases/get_onboarding_pages_usecase.dart';
-import 'package:taskora/features/splash_onboarding/presentation/widgets/onboarding_widgets/onboarding_dots_indicator.dart';
-import 'package:taskora/features/splash_onboarding/presentation/widgets/onboarding_widgets/onboarding_view_placeholder.dart';
 
-import 'onboarding_buttons.dart';
+import 'onboarding_content.dart';
 
 const int kOnboardingPagesCount = 3;
 
@@ -55,8 +50,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   @override
   void dispose() {
-    super.dispose();
     _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -78,63 +73,17 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              // Top row (Skip)
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: _isLastPage ? null : _skipToLast,
-                  child: Text(
-                    AppStrings.buttonSkip,
-                    style: context.medium.copyWith(
-                      color: _isDarkPage
-                          ? ColorManager.backgroundPrimaryColor
-                          : null,
-                    ),
-                  ),
-                ),
-              ),
-
-              const Spacer(flex: 2),
-
-              // Page content (image + title + subtitle)
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.45,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: kOnboardingPagesCount,
-                  onPageChanged: _onPageChanged,
-                  itemBuilder: (context, index) {
-                    return OnboardingPagePlaceholder(
-                      index: index,
-                      onboardingPageEntity: const GetOnboardingPagesUseCase()
-                          .call()[index],
-                    );
-                  },
-                ),
-              ),
-
-              const SizedBox(height: 18),
-
-              // Dots
-              OnboardingDotsIndicator(
-                count: kOnboardingPagesCount,
-                currentIndex: _currentIndex,
-                activeColor: dotsActiveColor,
-                inactiveColor: dotsInactiveColor,
-              ),
-
-              const SizedBox(height: 18),
-
-              // Button
-              OnboardingButtons(
-                isLastPage: _isLastPage,
-                goNext: _goNext,
-                onGetStarted: _onGetStarted,
-              ),
-              const Spacer(flex: 2),
-            ],
+          child: OnboardingContent(
+            isLastPage: _isLastPage,
+            currentIndex: _currentIndex,
+            dotsActiveColor: dotsActiveColor,
+            dotsInactiveColor: dotsInactiveColor,
+            isDarkPage: _isDarkPage,
+            onGetStarted: _onGetStarted,
+            goNext: _goNext,
+            onPageChanged: _onPageChanged,
+            pageController: _pageController,
+            skipToLast: _skipToLast,
           ),
         ),
       ),
