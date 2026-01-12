@@ -19,6 +19,13 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   bool get _isLastPage => _currentIndex == kOnboardingPagesCount - 1;
 
   bool get _isDarkPage => _currentIndex == 2;
+  static const List<Color> _pageBgColors = [
+    ColorManager.backgroundPrimaryColor,
+    Color(0xFFEFF1FF),
+    ColorManager.primaryColorApp,
+  ];
+
+  Color get bgColor => _pageBgColors[_currentIndex];
 
   @override
   void initState() {
@@ -56,10 +63,6 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = _isDarkPage
-        ? ColorManager.primaryColorApp
-        : ColorManager.backgroundPrimaryColor;
-
     final dotsActiveColor = _isDarkPage
         ? ColorManager.backgroundPrimaryColor
         : ColorManager.primaryColorApp;
