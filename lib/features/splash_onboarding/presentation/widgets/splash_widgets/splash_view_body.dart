@@ -1,34 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
-import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/splash_widgets/shimmer.dart';
 
-class SplashViewBody extends StatefulWidget {
+class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
-
-  @override
-  State<SplashViewBody> createState() => _SplashViewBodyState();
-}
-
-class _SplashViewBodyState extends State<SplashViewBody> {
-  @override
-  void initState() {
-    super.initState();
-    _navigateNext();
-  }
-
-  void _navigateNext() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 2000));
-      if (!mounted) return;
-
-      // Todo: go to home or onboarding
-      context.go(RoutersName.onboarding);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
