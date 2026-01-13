@@ -17,7 +17,10 @@ GoRouter goRouter = GoRouter(
       path: RoutersName.onboarding,
       builder: (context, state) => const OnboardingView(),
     ),
-    GoRoute(path: '/dvf', builder: (context, state) => const HomeTest()),
+    GoRoute(
+      path: RoutersName.home,
+      builder: (context, state) => const HomeTest(),
+    ),
   ],
   errorBuilder: (context, state) => const ErrorViewTest(),
 );
