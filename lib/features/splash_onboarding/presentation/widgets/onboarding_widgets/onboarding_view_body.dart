@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
-
+import '../../bloc/splash_onboarding_bloc.dart';
+import '../../bloc/splash_onboarding_event.dart';
 import 'onboarding_content.dart';
 
 const int kOnboardingPagesCount = 3;
@@ -52,7 +54,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   }
 
   void _onGetStarted() {
-    // TODO: Bloc
+    context.read<SplashOnboardingBloc>().add(OnboardingCompletedEvent());
   }
 
   @override
