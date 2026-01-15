@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
+import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 import 'package:taskora/features/splash_onboarding/domain/entities/onboarding_page_entity.dart';
 
@@ -20,7 +21,7 @@ class OnboardingPagePlaceholder extends StatelessWidget {
         : ColorManager.textHintColor;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: context.paddingScaffold.copyWith(top: 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -33,7 +34,7 @@ class OnboardingPagePlaceholder extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 22),
+          context.sizedBoxHeight_10,
 
           // Title
           Text(
@@ -42,7 +43,7 @@ class OnboardingPagePlaceholder extends StatelessWidget {
             style: context.bold.copyWith(color: ColorManager.textDarkColor),
           ),
 
-          const SizedBox(height: 10),
+          context.sizedBoxHeight_10,
 
           // Description
           Text(

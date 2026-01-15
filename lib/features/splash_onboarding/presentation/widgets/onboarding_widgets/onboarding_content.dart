@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
@@ -53,7 +54,7 @@ class OnboardingContent extends StatelessWidget {
           ),
         ),
 
-        const Spacer(flex: 2),
+        const Spacer(flex: 1),
 
         // Page content (image + title + subtitle)
         SizedBox(
@@ -72,7 +73,7 @@ class OnboardingContent extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 18),
+        context.sizedBoxHeight_10,
 
         // Dots
         OnboardingDotsIndicator(
@@ -82,7 +83,7 @@ class OnboardingContent extends StatelessWidget {
           inactiveColor: dotsInactiveColor,
         ),
 
-        const SizedBox(height: 18),
+        context.sizedBoxHeight_10,
 
         // Button
         OnboardingButtons(

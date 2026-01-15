@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskora/core/config/constants/color_manager.dart';
+import 'package:taskora/core/config/constants/app_sizes.dart';
 
 class OnboardingDotsIndicator extends StatelessWidget {
   const OnboardingDotsIndicator({
@@ -25,9 +25,11 @@ class OnboardingDotsIndicator extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 500),
           curve: Curves.decelerate,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          width: isActive ? 30 : 6,
-          height: 6,
+          margin: const EdgeInsets.symmetric(horizontal: AppSizes.spaceSmall_4),
+          width: isActive
+              ? AppSizes.circleOnBoardingSelected
+              : AppSizes.circleOnBoarding,
+          height: AppSizes.circleOnBoarding,
           decoration: BoxDecoration(
             color: isActive ? activeColor : inactiveColor,
             borderRadius: BorderRadius.circular(999),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
+import 'package:taskora/core/extensions/sizes_extension.dart';
 import '../../bloc/splash_onboarding_bloc.dart';
 import '../../bloc/splash_onboarding_event.dart';
 import 'onboarding_content.dart';
@@ -77,7 +78,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       color: bgColor,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: context.paddingScaffold,
           child: OnboardingContent(
             isLastPage: _isLastPage,
             currentIndex: _currentIndex,
