@@ -10,13 +10,9 @@ class SplashOnboardingBloc
     extends Bloc<SplashOnboardingEvent, SplashOnboardingState> {
   final CheckOnboardingStatusUseCase _checkStatus;
   final CompleteOnboardingUseCase _completeOnboarding;
-  final GetOnboardingPagesUseCase _getPages;
 
-  SplashOnboardingBloc(
-    this._checkStatus,
-    this._completeOnboarding,
-    this._getPages,
-  ) : super(SplashOnboardingInitial()) {
+  SplashOnboardingBloc(this._checkStatus, this._completeOnboarding)
+    : super(SplashOnboardingInitial()) {
     on<AppStartedEvent>(_onAppStarted);
     on<OnboardingCompletedEvent>(_onOnboardingCompleted);
   }
@@ -33,8 +29,7 @@ class SplashOnboardingBloc
     if (completed) {
       emit(NavigateToHome());
     } else {
-      final pages = _getPages();
-      emit(ShowOnboarding(pages));
+      emit(ShowOnboarding());
     }
   }
 

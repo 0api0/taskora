@@ -37,7 +37,6 @@ void setupSplashOnboardingDI(GetIt sl) {
     () => SplashOnboardingBloc(
       sl<CheckOnboardingStatusUseCase>(),
       sl<CompleteOnboardingUseCase>(),
-      sl<GetOnboardingPagesUseCase>(),
     ),
   );
 }

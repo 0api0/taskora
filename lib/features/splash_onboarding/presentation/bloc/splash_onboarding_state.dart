@@ -6,9 +6,6 @@ class SplashOnboardingInitial extends SplashOnboardingState {}
 
 class SplashOnboardingLoading extends SplashOnboardingState {}
 
-class ShowOnboarding extends SplashOnboardingState {
-  final List<OnboardingPageEntity> pages;
-  ShowOnboarding(this.pages);
-}
+class ShowOnboarding extends SplashOnboardingState {}
 
 class NavigateToHome extends SplashOnboardingState {}
