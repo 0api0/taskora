@@ -14,8 +14,8 @@ class AppSizes {
   static const double profileCircleAppBar = 45;
 
   // Logo
-  static const double heightLogo = 177;
-  static const double widthLogo = 156;
+  static const double heightLogo = 125;
+  static const double widthLogo = 125;
 
   // On boarding & status
   static const double circleOnBoarding = 6; // w & h
@@ -28,8 +28,9 @@ class AppSizes {
   static const double iconExtra = 54;
 
   //
-  static const double spaceSmall = 8;
-  static const double spaceSmallX = 4;
-  static const double spaceLarge = 36;
-  static const double spaceMedium = 22;
+  static const double spaceSmall_10 = 10;
+  static const double spaceSmall_8 = 8;
+  static const double spaceSmall_4 = 4;
+  static const double spaceLarge_36 = 36;
+  static const double spaceMedium_22 = 22;
 }
