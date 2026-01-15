@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:taskora/core/extensions/padding_extension.dart';
+import 'package:taskora/core/extensions/sizes_extension.dart';
 
 import '../../../../core/config/constants/app_strings.dart';
 import '../../../../core/config/constants/image_path.dart';

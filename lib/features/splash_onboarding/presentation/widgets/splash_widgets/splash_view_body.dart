@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/app_sizes.dart';
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
@@ -16,8 +17,8 @@ class SplashViewBody extends StatelessWidget {
           children: [
             Image.asset(
               ImagePath.logo,
-              width: 125,
-              height: 125,
+              width: AppSizes.widthLogo,
+              height: AppSizes.heightLogo,
               fit: BoxFit.contain,
             ),
             Transform.translate(
