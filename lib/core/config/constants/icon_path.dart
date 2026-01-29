@@ -46,4 +46,5 @@ class IconPath {
   static const String hide = 'assets/icons/Frame 427319619.svg';
   static const String dolllarEmoji =
       'assets/icons/streamline-emojis_dollar-banknote.svg';
+  static const String arrowBackLeft = 'assets/icons/ep_arrow-left-bold.svg';
 }

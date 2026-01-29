@@ -4,10 +4,13 @@ import '../config/constants/app_sizes.dart';
 
 extension SizesExtension on BuildContext {
   EdgeInsets get paddingScaffold =>
-      const EdgeInsets.only(right: 20, left: 20, top: 40);
+      const EdgeInsets.only(right: 20, left: 20, top: 10);
 
   SizedBox get sizedBoxHeight_10 =>
       const SizedBox(height: AppSizes.spaceSmall_10);
+
+  SizedBox get sizedBoxHeight_14 =>
+      const SizedBox(height: AppSizes.spaceSmall_14);
 
   SizedBox get sizedBoxHeight_8 =>
       const SizedBox(height: AppSizes.spaceSmall_8);

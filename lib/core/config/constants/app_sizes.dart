@@ -29,6 +29,7 @@ class AppSizes {
 
   //
   static const double spaceSmall_10 = 10;
+  static const double spaceSmall_14 = 14;
   static const double spaceSmall_8 = 8;
   static const double spaceSmall_4 = 4;
   static const double spaceLarge_36 = 36;
