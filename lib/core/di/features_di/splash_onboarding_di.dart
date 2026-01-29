@@ -22,18 +22,20 @@ void setupSplashOnboardingDI(GetIt sl) {
   );
 
   // -- use cases --
-  sl.registerLazySingleton(
+  sl.registerLazySingleton<CheckOnboardingStatusUseCase>(
     () => CheckOnboardingStatusUseCase(sl<OnboardingRepository>()),
   );
 
-  sl.registerLazySingleton(
+  sl.registerLazySingleton<CompleteOnboardingUseCase>(
     () => CompleteOnboardingUseCase(sl<OnboardingRepository>()),
   );
 
-  sl.registerLazySingleton(() => const GetOnboardingPagesUseCase());
+  sl.registerLazySingleton<GetOnboardingPagesUseCase>(
+    () => const GetOnboardingPagesUseCase(),
+  );
 
   // -- bloc --
-  sl.registerFactory(
+  sl.registerFactory<SplashOnboardingBloc>(
     () => SplashOnboardingBloc(
       sl<CheckOnboardingStatusUseCase>(),
       sl<CompleteOnboardingUseCase>(),
