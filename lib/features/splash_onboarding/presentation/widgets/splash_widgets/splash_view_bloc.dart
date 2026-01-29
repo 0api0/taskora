@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/splash_onboarding/presentation/widgets/splash_widgets/splash_view_body.dart';
 
+import '../../../../auth/presentation/views/login_view.dart';
 import '../../bloc/splash_onboarding_bloc.dart';
 import '../../bloc/splash_onboarding_state.dart';
 
@@ -17,7 +18,9 @@ class SplashViewBloc extends StatelessWidget {
         await Future.delayed(const Duration(milliseconds: 2000));
 
         if (state is NavigateToHome) {
-          context.go(RoutersName.home);
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const LoginView()));
         }
         if (state is ShowOnboarding) {
           context.go(RoutersName.onboarding);
