@@ -28,7 +28,7 @@ class SignUpFormSection extends StatelessWidget {
         CustomInputFiled(
           text: AppStrings.formName,
           hintText: AppStrings.formHintName,
-          textEditingController: controllerEmail,
+          textEditingController: controllerName,
         ),
         context.sizedBoxHeight_10,
         //----- Email -----
@@ -42,14 +42,14 @@ class SignUpFormSection extends StatelessWidget {
         CustomInputFiled(
           text: AppStrings.formPassword,
           hintText: AppStrings.formHintPassword,
-          textEditingController: controllerEmail,
+          textEditingController: controllerPassword,
         ),
         context.sizedBoxHeight_10,
         //----- Hourly rate  -----
         CustomInputFiled(
           text: AppStrings.formHourlyRate,
           hintText: AppStrings.formHintHourlyRate,
-          textEditingController: controllerEmail,
+          textEditingController: controllerHourlyRate,
         ),
       ],
     );

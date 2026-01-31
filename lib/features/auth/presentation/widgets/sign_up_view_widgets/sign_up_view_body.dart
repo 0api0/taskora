@@ -40,9 +40,15 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   }
 
   //------------ Fun for Create account view ------------
+  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
+
   void _onCreateAccountPressed() {
     // LoginEvent(name ,email, password, hourly rate)
-    if (!(_formKey.currentState?.validate() ?? false)) return;
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      setState(() => _autoValidate = AutovalidateMode.onUserInteraction);
+      return;
+    }
 
     final name = _controllerName.text;
     final email = _controllerEmail.text.trim();
@@ -58,28 +64,27 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: context.paddingScaffold,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const SignUpHeaderSection(),
-                  SignUpFormSection(
-                    controllerName: _controllerName,
-                    controllerEmail: _controllerEmail,
-                    controllerPassword: _controllerPassword,
-                    controllerHourlyRate: _controllerHourlyRate,
-                  ),
-                  SignUpFooterSection(
-                    onCreateAccountPressed: _onCreateAccountPressed,
-                    onLoginTap: _onLoginTap,
-                  ),
-                ],
-              ),
+    return Padding(
+      padding: context.paddingScaffold,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SignUpHeaderSection(),
+                SignUpFormSection(
+                  controllerName: _controllerName,
+                  controllerEmail: _controllerEmail,
+                  controllerPassword: _controllerPassword,
+                  controllerHourlyRate: _controllerHourlyRate,
+                ),
+                SignUpFooterSection(
+                  onCreateAccountPressed: _onCreateAccountPressed,
+                  onLoginTap: _onLoginTap,
+                ),
+              ],
             ),
           ),
         ),
