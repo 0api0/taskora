@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/icon_path.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
@@ -24,12 +25,17 @@ class LoginFormSection extends StatelessWidget {
           text: AppStrings.formEmail,
           hintText: AppStrings.formHintEmail,
           textEditingController: controllerEmail,
+          prefixIcon: IconPath.email,
         ),
         context.sizedBoxHeight_10,
         CustomInputFiled(
           text: AppStrings.formPassword,
           hintText: AppStrings.formHintPassword,
           textEditingController: controllerPassword,
+          prefixIcon: IconPath.passwordLock,
+          suffixIcon: IconPath.hide,
+          suffixIconOff: IconPath.unHide,
+          isPassword: true,
         ),
         context.sizedBoxHeight_10,
       ],

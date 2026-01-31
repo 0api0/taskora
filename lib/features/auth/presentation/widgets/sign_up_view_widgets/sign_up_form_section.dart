@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/icon_path.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
@@ -36,6 +37,7 @@ class SignUpFormSection extends StatelessWidget {
           text: AppStrings.formEmail,
           hintText: AppStrings.formHintEmail,
           textEditingController: controllerEmail,
+          prefixIcon: IconPath.email,
         ),
         context.sizedBoxHeight_10,
         //----- Password -----
@@ -43,6 +45,10 @@ class SignUpFormSection extends StatelessWidget {
           text: AppStrings.formPassword,
           hintText: AppStrings.formHintPassword,
           textEditingController: controllerPassword,
+          prefixIcon: IconPath.passwordLock,
+          suffixIcon: IconPath.hide,
+          suffixIconOff: IconPath.unHide,
+          isPassword: true,
         ),
         context.sizedBoxHeight_10,
         //----- Hourly rate  -----
@@ -50,6 +56,7 @@ class SignUpFormSection extends StatelessWidget {
           text: AppStrings.formHourlyRate,
           hintText: AppStrings.formHintHourlyRate,
           textEditingController: controllerHourlyRate,
+          suffixIcon: IconPath.dolllarEmoji,
         ),
       ],
     );
