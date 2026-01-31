@@ -19,8 +19,8 @@ class CustomInputFiled extends StatefulWidget {
   final int? maxLines;
   final int? maxLength;
   final String hintText;
-  final Widget? suffixIcon;
-  final Widget? prefixIcon;
+  final String? suffixIcon;
+  final String? prefixIcon;
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
 

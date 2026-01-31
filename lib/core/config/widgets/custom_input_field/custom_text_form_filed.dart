@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'custom_input_field.dart';
 
@@ -21,8 +22,26 @@ class CustomTextFormFiled extends StatelessWidget {
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
-        suffixIcon: widget.suffixIcon,
-        prefixIcon: widget.prefixIcon,
+        prefixIconConstraints: const BoxConstraints(
+          minWidth: 16,
+          minHeight: 16,
+        ),
+        suffixIconConstraints: const BoxConstraints(
+          minWidth: 16,
+          minHeight: 16,
+        ),
+        prefixIcon: widget.prefixIcon == null
+            ? null
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: SvgPicture.asset(widget.prefixIcon!),
+              ),
+        suffixIcon: widget.suffixIcon == null
+            ? null
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: SvgPicture.asset(widget.suffixIcon!),
+              ),
         hintText: widget.hintText,
       ),
     );
