@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:taskora/core/config/constants/icon_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 
@@ -28,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 24,
                         height: 24,
                       ),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () => context.pop(),
                     ),
                   )
                 : const SizedBox(),

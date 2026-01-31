@@ -18,9 +18,7 @@ class SplashViewBloc extends StatelessWidget {
         await Future.delayed(const Duration(milliseconds: 2000));
 
         if (state is NavigateToHome) {
-          Navigator.of(
-            context,
-          ).push(MaterialPageRoute(builder: (context) => const LoginView()));
+          context.go(RoutersName.login);
         }
         if (state is ShowOnboarding) {
           context.go(RoutersName.onboarding);
