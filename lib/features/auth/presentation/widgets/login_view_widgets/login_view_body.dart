@@ -40,10 +40,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     setState(() => _rememberMe = value);
   }
 
+  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
+
   void _onLoginPressed() {
     // LoginEvent(email, password, rememberMe)
-    if (!(_formKey.currentState?.validate() ?? false)) return;
-
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      setState(() => _autoValidate = AutovalidateMode.onUserInteraction);
+      return;
+    }
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
 
@@ -56,28 +61,27 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: context.paddingScaffold,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const LoginHeaderSection(),
-                  LoginFormSection(
-                    controllerEmail: _controllerEmail,
-                    controllerPassword: _controllerPassword,
-                  ),
-                  LoginFooterSection(
-                    onLoginPressed: _onLoginPressed,
-                    onCreateAccountTap: _onCreateAccountTap,
-                    rememberMe: _rememberMe,
-                    onRememberMeChanged: _onRememberMeChanged,
-                  ),
-                ],
-              ),
+    return Padding(
+      padding: context.paddingScaffold,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const LoginHeaderSection(),
+                LoginFormSection(
+                  controllerEmail: _controllerEmail,
+                  controllerPassword: _controllerPassword,
+                ),
+                LoginFooterSection(
+                  onLoginPressed: _onLoginPressed,
+                  onCreateAccountTap: _onCreateAccountTap,
+                  rememberMe: _rememberMe,
+                  onRememberMeChanged: _onRememberMeChanged,
+                ),
+              ],
             ),
           ),
         ),
