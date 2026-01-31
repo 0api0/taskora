@@ -6,37 +6,37 @@ import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/widgets/custom_button/custom_button.dart';
 import '../../../../../core/config/widgets/custom_rich_text.dart';
 
-class LoginFooterSection extends StatefulWidget {
-  const LoginFooterSection({super.key});
+class LoginFooterSection extends StatelessWidget {
+  const LoginFooterSection({
+    super.key,
+    required this.onLoginPressed,
+    required this.onCreateAccountTap,
+    required this.rememberMe,
+    required this.onRememberMeChanged,
+  });
 
-  @override
-  State<LoginFooterSection> createState() => _LoginFooterSectionState();
-}
+  final VoidCallback onLoginPressed;
+  final VoidCallback onCreateAccountTap;
+  final bool rememberMe;
+  final ValueChanged<bool> onRememberMeChanged;
 
-class _LoginFooterSectionState extends State<LoginFooterSection> {
-  bool _rememberMe = false;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // -------------- Remember me ----------------
-        RememberMeRow(
-          value: _rememberMe,
-          onChanged: (bool value) {
-            setState(() => _rememberMe = value);
-          },
-        ),
+        RememberMeRow(value: rememberMe, onChanged: onRememberMeChanged),
         context.sizedBoxHeight_36,
         // -------------- Log in button ----------------
-        CustomButton(text: AppStrings.buttonLoginIn, onPressed: () {}),
+        CustomButton(text: AppStrings.buttonLoginIn, onPressed: onLoginPressed),
         context.sizedBoxHeight_10,
         // -------------- rich text row ----------------
         Center(
           child: CustomRichTextRow(
             text: AppStrings.formLogIn,
             actionText: AppStrings.formCreateAccountButton,
-            onTap: () {},
+            onTap: onCreateAccountTap,
           ),
         ),
       ],

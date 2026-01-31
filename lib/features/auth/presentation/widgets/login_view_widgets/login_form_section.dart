@@ -4,29 +4,15 @@ import 'package:taskora/core/extensions/sizes_extension.dart';
 import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/widgets/custom_input_field/custom_input_field.dart';
 
-class LoginFormSection extends StatefulWidget {
-  const LoginFormSection({super.key});
+class LoginFormSection extends StatelessWidget {
+  const LoginFormSection({
+    super.key,
+    required this.controllerEmail,
+    required this.controllerPassword,
+  });
 
-  @override
-  State<LoginFormSection> createState() => _LoginFormSectionState();
-}
-
-class _LoginFormSectionState extends State<LoginFormSection> {
-  late final TextEditingController _controllerEmail;
-  late final TextEditingController _controllerPassword;
-  @override
-  void initState() {
-    super.initState();
-    _controllerEmail = TextEditingController();
-    _controllerPassword = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controllerEmail.dispose();
-    _controllerPassword.dispose();
-    super.dispose();
-  }
+  final TextEditingController controllerEmail;
+  final TextEditingController controllerPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +23,13 @@ class _LoginFormSectionState extends State<LoginFormSection> {
         CustomInputFiled(
           text: AppStrings.formEmail,
           hintText: AppStrings.formHintEmail,
-          textEditingController: _controllerEmail,
+          textEditingController: controllerEmail,
         ),
         context.sizedBoxHeight_10,
         CustomInputFiled(
           text: AppStrings.formPassword,
           hintText: AppStrings.formHintPassword,
-          textEditingController: _controllerPassword,
+          textEditingController: controllerPassword,
         ),
         context.sizedBoxHeight_10,
       ],
