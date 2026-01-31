@@ -13,6 +13,8 @@ class CustomInputFiled extends StatefulWidget {
     this.maxLines = 1,
     this.keyboardType,
     this.maxLength,
+    this.suffixIconOff,
+    this.isPassword = false,
   });
 
   final String text;
@@ -23,6 +25,8 @@ class CustomInputFiled extends StatefulWidget {
   final String? prefixIcon;
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
+  final String? suffixIconOff;
+  final bool? isPassword;
 
   @override
   State<CustomInputFiled> createState() => _CustomInputFiledState();
@@ -30,6 +34,17 @@ class CustomInputFiled extends StatefulWidget {
 
 class _CustomInputFiledState extends State<CustomInputFiled> {
   final FocusNode _focusNode = FocusNode();
+  bool _hasText = false;
+  bool _obscureText = true;
+
+  void _onTextChange() {
+    final hasTextNow = widget.textEditingController.text.isNotEmpty;
+    if (hasTextNow != _hasText) {
+      setState(() => _hasText = hasTextNow);
+    }
+  }
+
+  void _toggleObscure() => setState(() => _obscureText = !_obscureText);
 
   void _onFocusChange() => setState(() {});
 
@@ -37,6 +52,8 @@ class _CustomInputFiledState extends State<CustomInputFiled> {
   void initState() {
     super.initState();
     _focusNode.addListener(_onFocusChange);
+    widget.textEditingController.addListener(_onTextChange);
+    _hasText = widget.textEditingController.text.isNotEmpty;
   }
 
   @override
@@ -63,7 +80,13 @@ class _CustomInputFiledState extends State<CustomInputFiled> {
           widget: widget,
         ),
         const SizedBox(height: 8),
-        CustomTextFormFiled(widget: widget, focusNode: _focusNode),
+        CustomTextFormFiled(
+          widget: widget,
+          focusNode: _focusNode,
+          hasText: _hasText,
+          obscureText: _obscureText,
+          onToggleObscure: _toggleObscure,
+        ),
       ],
     );
   }
