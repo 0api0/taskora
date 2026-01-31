@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
+import 'package:taskora/core/router/routers_name.dart';
 import 'login_footer_section.dart';
 import 'login_form_section.dart';
 import 'login_header_section.dart';
@@ -49,7 +51,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   }
 
   void _onCreateAccountTap() {
-    // TODO: GoRouter -> SignUp
+    context.push(RoutersName.signUp);
   }
 
   @override
