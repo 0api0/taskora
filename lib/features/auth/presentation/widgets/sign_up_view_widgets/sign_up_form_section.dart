@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:taskora/core/config/constants/icon_path.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
+import '../../../../../core/config/validators/vlaidate_fun.dart';
 import '../../../../../core/config/widgets/custom_input_field/custom_input_field.dart';
 
 class SignUpFormSection extends StatelessWidget {
@@ -27,6 +29,7 @@ class SignUpFormSection extends StatelessWidget {
         context.sizedBoxHeight_14,
         //----- Name -----
         CustomInputFiled(
+          fieldType: FieldType.name,
           text: AppStrings.formName,
           hintText: AppStrings.formHintName,
           textEditingController: controllerName,
@@ -34,6 +37,7 @@ class SignUpFormSection extends StatelessWidget {
         context.sizedBoxHeight_10,
         //----- Email -----
         CustomInputFiled(
+          fieldType: FieldType.email,
           text: AppStrings.formEmail,
           hintText: AppStrings.formHintEmail,
           textEditingController: controllerEmail,
@@ -42,6 +46,7 @@ class SignUpFormSection extends StatelessWidget {
         context.sizedBoxHeight_10,
         //----- Password -----
         CustomInputFiled(
+          fieldType: FieldType.password,
           text: AppStrings.formPassword,
           hintText: AppStrings.formHintPassword,
           textEditingController: controllerPassword,
@@ -53,10 +58,15 @@ class SignUpFormSection extends StatelessWidget {
         context.sizedBoxHeight_10,
         //----- Hourly rate  -----
         CustomInputFiled(
+          fieldType: FieldType.hourly,
           text: AppStrings.formHourlyRate,
           hintText: AppStrings.formHintHourlyRate,
           textEditingController: controllerHourlyRate,
           suffixIcon: IconPath.dolllarEmoji,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          inputFormatters: [
+            FilteringTextInputFormatter.allow(RegExp(r'^\d*([.,]\d*)?$')),
+          ],
         ),
       ],
     );
