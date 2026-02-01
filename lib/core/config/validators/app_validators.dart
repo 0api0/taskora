@@ -1,0 +1,54 @@
+class AppValidators {
+  static String? requiredField(String? value, {required String fieldLabel}) {
+    final v = value?.trim() ?? "";
+    if (v.isEmpty) return '$fieldLabel is required';
+    return null;
+  }
+
+  static String? email(String? value) {
+    // required field
+    final errorRequired = requiredField(value, fieldLabel: 'email');
+    if (errorRequired != null) return errorRequired;
+    // Valid email
+    final emailRegex = RegExp(r'^[\w\.\-]+@([\w\-]+\.)+[\w\-]{2,}$');
+    if (!emailRegex.hasMatch(value!)) return 'Enter a valid email';
+    return null;
+  }
+
+  static String? password(String? value, {int min = 8}) {
+    // required field
+    final errorRequired = requiredField(value, fieldLabel: 'password');
+    if (errorRequired != null) return errorRequired;
+    // Valid password
+    if (value!.length < min) return 'Password must be at least $min characters';
+    return null;
+  }
+
+  static String? doubleNumber(String? value, {required String fieldLabel}) {
+    // required field
+    final errorRequired = requiredField(value, fieldLabel: fieldLabel);
+    if (errorRequired != null) return errorRequired;
+    // Valid number
+    final normalized = value!.replaceAll(',', '.');
+    final parsed = double.tryParse(normalized);
+
+    if (parsed == null) return '$fieldLabel must be a number';
+    if (parsed < 0) return '$fieldLabel must be >= 0';
+    return null;
+  }
+
+  static String? name(
+    String? value, {
+    required String fieldLabel,
+    int min = 2,
+  }) {
+    // required field
+    final errorRequired = requiredField(value, fieldLabel: fieldLabel);
+    if (errorRequired != null) return errorRequired;
+    // Valid name
+    if (value!.length < min) {
+      return '$fieldLabel must be at least $min characters';
+    }
+    return null;
+  }
+}
