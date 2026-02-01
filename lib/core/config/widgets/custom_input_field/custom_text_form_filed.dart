@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../constants/color_manager.dart';
+import 'build_input_deco_field.dart';
 import 'custom_input_field.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
@@ -22,54 +20,33 @@ class CustomTextFormFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showSuffix = widget.isPassword!
-        ? hasText
-        : (widget.suffixIcon != null);
+    /* show suffix password
+     If password field
+    * true : => if has text (true : => show suffix icon -hide pass- , false : => not show)
+    * false : show suffix icon for any field
+    * */
+    final showSuffixPassword = widget.isPassword ? hasText : false;
 
-    final suffixPath = widget.isPassword!
-        ? (obscureText
-              ? (widget.suffixIcon ?? '')
-              : (widget.suffixIconOff ?? widget.suffixIcon ?? ''))
-        : (widget.suffixIcon ?? '');
+    /* suffix path
+    if showSuffixPassword
+    *  true : => if obscure text (true : show icon hide pass , false : show icon un hide pass)
+    * false : => show icon for any field
+    * */
+    final suffixPath = showSuffixPassword
+        ? (obscureText ? (widget.suffixIcon) : (widget.suffixIconOff))
+        : (widget.suffixIcon);
     return TextFormField(
       maxLength: widget.maxLength,
       controller: widget.textEditingController,
       focusNode: _focusNode,
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
-      obscureText: widget.isPassword! ? obscureText : false,
-      decoration: InputDecoration(
-        prefixIconConstraints: const BoxConstraints(
-          minWidth: 16,
-          minHeight: 16,
-        ),
-        suffixIconConstraints: const BoxConstraints(
-          minWidth: 16,
-          minHeight: 16,
-        ),
-        prefixIcon: widget.prefixIcon == null
-            ? null
-            : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: SvgPicture.asset(widget.prefixIcon!),
-              ),
-        suffixIcon: showSuffix
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: InkWell(
-                  onTap: widget.isPassword! ? onToggleObscure : null,
-                  child: SizedBox(
-                    child: SvgPicture.asset(
-                      suffixPath,
-                      fit: BoxFit.contain,
-                      height: 16,
-                      width: 16,
-                    ),
-                  ),
-                ),
-              )
-            : null,
-        hintText: widget.hintText,
+      obscureText: widget.isPassword ? obscureText : false,
+      decoration: buildInputDecorationField(
+        showSuffixPassword: showSuffixPassword,
+        suffixPath: suffixPath ?? '',
+        onToggleObscure: onToggleObscure,
+        widget: widget,
       ),
     );
   }

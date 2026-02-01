@@ -26,7 +26,7 @@ class CustomInputFiled extends StatefulWidget {
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
   final String? suffixIconOff;
-  final bool? isPassword;
+  final bool isPassword;
 
   @override
   State<CustomInputFiled> createState() => _CustomInputFiledState();
