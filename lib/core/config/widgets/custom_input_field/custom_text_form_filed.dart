@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../validators/vlaidate_fun.dart';
 import 'build_input_deco_field.dart';
 import 'custom_input_field.dart';
 
@@ -41,7 +42,10 @@ class CustomTextFormFiled extends StatelessWidget {
       focusNode: _focusNode,
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
+      inputFormatters: widget.inputFormatters,
+      validator: (value) => validate(value, widget.fieldType),
       obscureText: widget.isPassword ? obscureText : false,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: buildInputDecorationField(
         showSuffixPassword: showSuffixPassword,
         suffixPath: suffixPath ?? '',

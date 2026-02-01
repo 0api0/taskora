@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../../validators/vlaidate_fun.dart';
 import 'custom_animated_text.dart';
 import 'custom_text_form_filed.dart';
 
@@ -15,6 +17,9 @@ class CustomInputFiled extends StatefulWidget {
     this.maxLength,
     this.suffixIconOff,
     this.isPassword = false,
+    this.inputFormatters,
+    this.fieldType = FieldType.field,
+    this.isRequired = true,
   });
 
   final String text;
@@ -27,6 +32,9 @@ class CustomInputFiled extends StatefulWidget {
   final TextInputType? keyboardType;
   final String? suffixIconOff;
   final bool isPassword;
+  final List<TextInputFormatter>? inputFormatters;
+  final FieldType fieldType;
+  final bool isRequired;
 
   @override
   State<CustomInputFiled> createState() => _CustomInputFiledState();
