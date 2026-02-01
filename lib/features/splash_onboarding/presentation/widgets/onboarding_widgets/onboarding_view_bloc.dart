@@ -15,7 +15,7 @@ class OnboardingViewBloc extends StatelessWidget {
     return BlocListener<SplashOnboardingBloc, SplashOnboardingState>(
       listener: (context, state) {
         if (state is NavigateToHome) {
-          context.go(RoutersName.home);
+          context.go(RoutersName.login);
         }
       },
       child: const OnboardingViewBody(),

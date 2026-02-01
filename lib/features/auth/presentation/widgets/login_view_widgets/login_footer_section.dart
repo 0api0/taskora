@@ -34,7 +34,7 @@ class LoginFooterSection extends StatelessWidget {
         // -------------- rich text row ----------------
         Center(
           child: CustomRichTextRow(
-            text: AppStrings.formLogIn,
+            text: AppStrings.formCreateAccount,
             actionText: AppStrings.formCreateAccountButton,
             onTap: onCreateAccountTap,
           ),

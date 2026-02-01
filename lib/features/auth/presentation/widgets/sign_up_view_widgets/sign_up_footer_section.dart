@@ -30,7 +30,7 @@ class SignUpFooterSection extends StatelessWidget {
         Center(
           child: CustomRichTextRow(
             text: AppStrings.formLogIn,
-            actionText: AppStrings.formCreateAccountButton,
+            actionText: AppStrings.formLogInButton,
             onTap: onLoginTap,
           ),
         ),
