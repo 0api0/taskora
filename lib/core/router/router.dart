@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:taskora/core/router/routers_name.dart';
+import 'package:taskora/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:taskora/features/auth/presentation/views/login_view.dart';
+import 'package:taskora/features/auth/presentation/views/reset_password_view.dart';
 import 'package:taskora/features/auth/presentation/views/sign_up_view.dart';
 import 'package:taskora/features/splash_onboarding/presentation/views/splash_view.dart';
 
@@ -31,6 +33,14 @@ GoRouter goRouter = GoRouter(
     GoRoute(
       path: RoutersName.signUp,
       builder: (context, state) => const SignUpView(),
+    ),
+    GoRoute(
+      path: RoutersName.forgotPassword,
+      builder: (context, state) => const ForgotPasswordView(),
+    ),
+    GoRoute(
+      path: RoutersName.resetPassword,
+      builder: (context, state) => const ResetPasswordView(),
     ),
   ],
   errorBuilder: (context, state) => const ErrorViewTest(),
