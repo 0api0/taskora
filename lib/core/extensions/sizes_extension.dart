@@ -21,6 +21,9 @@ extension SizesExtension on BuildContext {
   SizedBox get sizedBoxHeight_36 =>
       const SizedBox(height: AppSizes.spaceLarge_36);
 
+  SizedBox get sizedBoxHeight_60 =>
+      const SizedBox(height: AppSizes.spaceLarge_60);
+
   SizedBox get sizedBoxHeight_22 =>
       const SizedBox(height: AppSizes.spaceMedium_22);
 }

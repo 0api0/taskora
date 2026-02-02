@@ -126,7 +126,7 @@ class AppStrings {
       'Our servers are having trouble right now';
   static const String messgaesLoginFailed = 'login failed';
   static const String messgaesSubLoginFailed =
-      'Email is incorrect . Please double -check your credentials . ';
+      'Login is incorrect . Please double -check your credentials . ';
 
   // Welcome & start & create
   static const String messgaesWelcomeBack = 'Welcome Back ! 👋';
