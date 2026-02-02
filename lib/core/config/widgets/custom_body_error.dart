@@ -26,30 +26,33 @@ class CustomBodyError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image.asset(image, width: 100, height: 100),
-        context.sizedBoxHeight_22,
-        Text(
-          title,
-          style: context.bold.copyWith(color: ColorManager.textDarkColor),
-        ),
-        context.sizedBoxHeight_4,
-        Text(
-          subTitle,
-          style: context.regular.copyWith(color: ColorManager.textHintColor),
-        ),
-        context.sizedBoxHeight_36,
-        CustomButton(text: textButton, onPressed: onPressed),
-        context.sizedBoxHeight_8,
-        CustomButton(
-          text: textButtonOutline,
-          onPressed: onPressedOutline,
-          isOutline: true,
-        ),
-      ],
+    return Padding(
+      padding: context.paddingScaffold,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(image, width: 100, height: 100),
+          context.sizedBoxHeight_22,
+          Text(
+            title,
+            style: context.bold.copyWith(color: ColorManager.textDarkColor),
+          ),
+          context.sizedBoxHeight_4,
+          Text(
+            subTitle,
+            style: context.regular.copyWith(color: ColorManager.textHintColor),
+          ),
+          context.sizedBoxHeight_36,
+          CustomButton(text: textButton, onPressed: onPressed),
+          context.sizedBoxHeight_8,
+          CustomButton(
+            text: textButtonOutline,
+            onPressed: onPressedOutline,
+            isOutline: true,
+          ),
+        ],
+      ),
     );
   }
 }
