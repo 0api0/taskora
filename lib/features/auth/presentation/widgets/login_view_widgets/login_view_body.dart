@@ -40,18 +40,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     setState(() => _rememberMe = value);
   }
 
-  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
-
   void _onLoginPressed() {
     // LoginEvent(email, password, rememberMe)
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() => _autoValidate = AutovalidateMode.onUserInteraction);
+      setState(() {});
       return;
     }
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
-
+    //TODO: JUST TEST FOR FORGET PASSWORD
+    context.push(RoutersName.forgotPassword);
     // TODO: Bloc
   }
 
