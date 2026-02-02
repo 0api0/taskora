@@ -48,7 +48,7 @@ class CustomTextFormFiled extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: buildInputDecorationField(
         showSuffixPassword: showSuffixPassword,
-        suffixPath: suffixPath ?? '',
+        suffixPath: suffixPath,
         onToggleObscure: onToggleObscure,
         widget: widget,
       ),

@@ -68,7 +68,6 @@ class _CustomInputFiledState extends State<CustomInputFiled> {
   void dispose() {
     _focusNode.removeListener(_onFocusChange);
     _focusNode.dispose();
-    widget.textEditingController.dispose();
     super.dispose();
   }
 

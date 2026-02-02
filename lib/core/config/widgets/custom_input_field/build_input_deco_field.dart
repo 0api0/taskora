@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taskora/core/config/widgets/custom_input_field/suffix_icon/normal_suffix_icon.dart';
+import 'package:taskora/core/config/widgets/custom_input_field/suffix_icon/password_suffix_icon.dart';
 
 import 'custom_input_field.dart';
 
 InputDecoration buildInputDecorationField({
   required bool showSuffixPassword,
-  required String suffixPath,
+  required String? suffixPath,
   required CustomInputFiled widget,
   required VoidCallback? onToggleObscure,
 }) {
@@ -19,30 +21,14 @@ InputDecoration buildInputDecorationField({
             child: SvgPicture.asset(widget.prefixIcon!),
           ),
     suffixIcon: showSuffixPassword
-        ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: InkWell(
-              onTap: widget.isPassword ? onToggleObscure : null,
-              child: SizedBox(
-                child: SvgPicture.asset(
-                  suffixPath,
-                  fit: BoxFit.contain,
-                  height: 24,
-                  width: 24,
-                ),
-              ),
-            ),
+        ? ShowSuffixPassword(
+            isPassword: widget.isPassword,
+            suffixPath: suffixPath!,
+            onToggleObscure: onToggleObscure,
           )
-        : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: SizedBox(
-              child: SvgPicture.asset(
-                // if not password field show any icon for field
-                widget.isPassword ? '' : suffixPath,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
+        : (!widget.isPassword && suffixPath != null
+              ? NormalSuffix(suffixPath: suffixPath)
+              : null),
     hintText: widget.hintText,
   );
 }
