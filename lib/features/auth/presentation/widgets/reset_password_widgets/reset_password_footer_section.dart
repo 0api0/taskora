@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
+import 'package:taskora/core/router/routers_name.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/constants/icon_path.dart';
@@ -39,7 +41,7 @@ class _ResetPasswordFooterSectionState
       return;
     }
     final email = _controllerEmail.text.trim();
-
+    context.push(RoutersName.sendCode);
     // TODO: Bloc
   }
 
