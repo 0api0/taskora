@@ -37,6 +37,18 @@ class AppValidators {
     return null;
   }
 
+  static String? numberPinCode(String? value) {
+    final String label = 'Pin Code';
+    // required field
+    final errorRequired = requiredField(value, fieldLabel: label);
+    if (errorRequired != null) return errorRequired;
+    // Valid number
+    final parsed = double.tryParse(value!);
+
+    if (parsed == null) return '$label must be a number';
+    return null;
+  }
+
   static String? name(
     String? value, {
     required String fieldLabel,

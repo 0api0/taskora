@@ -1,7 +1,6 @@
-import '../widgets/custom_input_field/custom_input_field.dart';
 import 'app_validators.dart';
 
-enum FieldType { name, email, password, hourly, field }
+enum FieldType { name, email, password, hourly, field, pin }
 
 String? validate(String? value, FieldType fieldType) {
   // In enum (ex : fieldType.name but i need after fieldType. as a string )
@@ -22,6 +21,8 @@ String? validate(String? value, FieldType fieldType) {
 
     case FieldType.field:
       return AppValidators.requiredField(value, fieldLabel: label);
+    case FieldType.pin:
+      return AppValidators.numberPinCode(value);
       return null;
   }
 }
