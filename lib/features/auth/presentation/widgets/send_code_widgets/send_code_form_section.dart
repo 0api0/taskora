@@ -34,10 +34,15 @@ class SendCodeFormSection extends StatelessWidget {
       pastedTextStyle: context.bold.copyWith(
         color: ColorManager.statusOrangeColor,
       ),
-      // if user need paste text has length > 4 , no any action
-      // just < 4
+      /*
+      if user need paste text has length > 4 or need paste any char not number
+      => no any action
+      just < 4 and number
+      */
       beforeTextPaste: (text) {
-        if (text!.length > 4) {
+        FilteringTextInputFormatter filtering =
+            FilteringTextInputFormatter.allow(RegExp(r'^\d*([]\d*)?$'));
+        if (text!.length > 4 || filtering.allow) {
           return false;
         }
         return true;

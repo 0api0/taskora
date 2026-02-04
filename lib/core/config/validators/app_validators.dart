@@ -46,6 +46,9 @@ class AppValidators {
     final parsed = double.tryParse(value!);
 
     if (parsed == null) return '$label must be a number';
+    if (value.length < 4) {
+      return '$label must be 4 length';
+    }
     return null;
   }
 
