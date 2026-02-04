@@ -7,4 +7,5 @@ class RoutersName {
   static const String signUp = '/signUp';
   static const String forgotPassword = '/forgotPassword';
   static const String resetPassword = '/resetPassword';
+  static const String sendCode = '/sendCode';
 }
