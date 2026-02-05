@@ -44,7 +44,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     // LoginEvent(email, password, rememberMe)
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() {});
       return;
     }
     final email = _controllerEmail.text.trim();
