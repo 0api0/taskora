@@ -10,27 +10,27 @@ import '../../../features/auth/presentation/views/sign_up_view.dart';
 
 final List<GoRoute> authRoutes = [
   GoRoute(
-    path: RoutersName.login,
+    path: RoutersName.authRoute.login,
     builder: (context, state) => const LoginView(),
   ),
   GoRoute(
-    path: RoutersName.signUp,
+    path: RoutersName.authRoute.signUp,
     builder: (context, state) => const SignUpView(),
   ),
   GoRoute(
-    path: RoutersName.forgotPassword,
+    path: RoutersName.authRoute.forgotPassword,
     builder: (context, state) => const ForgotPasswordView(),
   ),
   GoRoute(
-    path: RoutersName.resetPassword,
+    path: RoutersName.authRoute.resetPassword,
     builder: (context, state) => const ResetPasswordView(),
   ),
   GoRoute(
-    path: RoutersName.sendCode,
+    path: RoutersName.authRoute.sendCode,
     builder: (context, state) => const SendCodeView(),
   ),
   GoRoute(
-    path: RoutersName.newPassword,
+    path: RoutersName.authRoute.newPassword,
     builder: (context, state) => const NewPasswordView(),
   ),
 ];

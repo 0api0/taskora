@@ -7,15 +7,15 @@ import '../routers_name.dart';
 
 final List<GoRoute> splashOnboarding = [
   GoRoute(
-    path: RoutersName.splash,
+    path: RoutersName.splashOnboardingRoute.splash,
     builder: (context, state) => const SplashView(),
   ),
   GoRoute(
-    path: RoutersName.onboarding,
+    path: RoutersName.splashOnboardingRoute.onboarding,
     builder: (context, state) => const OnboardingView(),
   ),
   GoRoute(
-    path: RoutersName.home,
+    path: RoutersName.splashOnboardingRoute.home,
     builder: (context, state) => const HomeTest(),
   ),
 ];
