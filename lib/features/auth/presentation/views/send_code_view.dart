@@ -7,6 +7,12 @@ class SendCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: SendCodeViewBody());
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: const Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: SendCodeViewBody(),
+      ),
+    );
   }
 }

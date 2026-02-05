@@ -32,7 +32,6 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
   void _onVerifyCodePressed() {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() {});
       return;
     }
     final pinCode = _controllerPinCode.text.trim();
@@ -45,21 +44,24 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
     return Padding(
       padding: context.paddingScaffold,
       child: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              // -------------- Header ----------------
-              const SendCodeHeader(),
-              // -------------- body ----------------
-              SendCodeFormSection(controllerPinCode: _controllerPinCode),
-              // -------------- Footer ----------------
-              SendCodeFooterSection(
-                onPressed: () {
-                  _onVerifyCodePressed();
-                },
-              ),
-            ],
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                // -------------- Header ----------------
+                const SendCodeHeader(),
+                // -------------- body ----------------
+                SendCodeFormSection(controllerPinCode: _controllerPinCode),
+                // -------------- Footer ----------------
+                SendCodeFooterSection(
+                  onPressed: () {
+                    _onVerifyCodePressed();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
