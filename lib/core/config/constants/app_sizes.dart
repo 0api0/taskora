@@ -35,4 +35,5 @@ class AppSizes {
   static const double spaceLarge_36 = 36;
   static const double spaceLarge_60 = 60;
   static const double spaceMedium_22 = 22;
+  static const double spaceMedium_16 = 16;
 }
