@@ -31,7 +31,7 @@ class NewPasswordFormSection extends StatelessWidget {
           suffixIconOff: IconPath.unHide,
           isPassword: true,
         ),
-        context.sizedBoxHeight_10,
+        context.sizedBoxHeight_16,
         CustomInputFiled(
           fieldType: FieldType.password,
           text: AppStrings.formConfirmPassword,

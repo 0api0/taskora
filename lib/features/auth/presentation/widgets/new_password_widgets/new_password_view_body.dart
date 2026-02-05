@@ -38,7 +38,6 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
   void _onChangePasswordPressed() {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() {});
       return;
     }
     final password = _controllerPassword.text;
@@ -53,6 +52,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
       padding: context.paddingScaffold,
       child: SafeArea(
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Form(
             key: _formKey,
             child: Column(
