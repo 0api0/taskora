@@ -37,7 +37,6 @@ class _ResetPasswordFooterSectionState
   void _onContinuePressed() {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() {});
       return;
     }
     final email = _controllerEmail.text.trim();

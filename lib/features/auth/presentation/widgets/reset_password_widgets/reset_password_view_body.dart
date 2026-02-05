@@ -14,20 +14,23 @@ class ResetPasswordViewBody extends StatelessWidget {
     return Padding(
       padding: context.paddingScaffold,
       child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // -------------- Header ----------------
-            const CustomAppBar(title: AppStrings.titleEnterYourEmailAddress),
-            Text(
-              AppStrings.messgaesSubReceiveCode,
-              style: context.regular.copyWith(
-                color: ColorManager.textHintColor,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // -------------- Header ----------------
+              const CustomAppBar(title: AppStrings.titleEnterYourEmailAddress),
+              Text(
+                AppStrings.messgaesSubReceiveCode,
+                style: context.regular.copyWith(
+                  color: ColorManager.textHintColor,
+                ),
               ),
-            ),
-            // -------------- Footer ----------------
-            const ResetPasswordFooterSection(),
-          ],
+              // -------------- Footer ----------------
+              const ResetPasswordFooterSection(),
+            ],
+          ),
         ),
       ),
     );
