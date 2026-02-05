@@ -18,6 +18,9 @@ class SendCodeFormSection extends StatelessWidget {
       appContext: context,
       length: 4,
       controller: controllerPinCode,
+      // just parent class has controller (can init or dis)
+      // if child class has controller from parent do dis controller (this make error)
+      autoDisposeControllers: false,
       mainAxisAlignment: MainAxisAlignment.center,
       separatorBuilder: (context, index) => const SizedBox(width: 16),
       keyboardType: TextInputType.number,
