@@ -17,7 +17,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
       textButton: AppStrings.buttonTryAgain,
       textButtonOutline: AppStrings.buttonForgetPass,
       onPressedOutline: () {
-        context.push(RoutersName.resetPassword);
+        context.push(RoutersName.authRoute.resetPassword);
       },
       onPressed: () {
         context.pop();

@@ -26,7 +26,7 @@ class ErrorViewTest extends StatelessWidget {
             // TODO: go to support
           },
           onPressed: () {
-            context.go(RoutersName.splash);
+            context.go(RoutersName.splashOnboardingRoute.splash);
           },
         ),
       ),

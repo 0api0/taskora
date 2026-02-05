@@ -43,7 +43,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
     }
     final password = _controllerPassword.text;
     final confirmPassword = _controllerConfirmPassword.text;
-    context.go(RoutersName.home);
+    context.go(RoutersName.splashOnboardingRoute.home);
     // TODO: Bloc
   }
 

@@ -50,12 +50,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
     //TODO: JUST TEST FOR FORGET PASSWORD
-    context.push(RoutersName.forgotPassword);
+    context.push(RoutersName.authRoute.forgotPassword);
     // TODO: Bloc
   }
 
   void _onCreateAccountTap() {
-    context.push(RoutersName.signUp);
+    context.push(RoutersName.authRoute.signUp);
   }
 
   @override

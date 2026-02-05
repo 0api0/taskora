@@ -41,7 +41,7 @@ class _ResetPasswordFooterSectionState
       return;
     }
     final email = _controllerEmail.text.trim();
-    context.push(RoutersName.sendCode);
+    context.push(RoutersName.authRoute.sendCode);
     // TODO: Bloc
   }
 

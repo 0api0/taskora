@@ -36,7 +36,7 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
       return;
     }
     final pinCode = _controllerPinCode.text.trim();
-    context.push(RoutersName.newPassword);
+    context.push(RoutersName.authRoute.newPassword);
     // TODO: Bloc
   }
 
