@@ -40,13 +40,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   }
 
   //------------ Fun for Create account view ------------
-  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
 
   void _onCreateAccountPressed() {
     // LoginEvent(name ,email, password, hourly rate)
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      setState(() => _autoValidate = AutovalidateMode.onUserInteraction);
       return;
     }
 
@@ -54,7 +52,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
     final hourlyRate = _controllerHourlyRate.text;
-
+    context.pop();
     // TODO: Bloc
   }
 

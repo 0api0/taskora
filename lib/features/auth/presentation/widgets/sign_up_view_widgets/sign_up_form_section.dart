@@ -34,7 +34,7 @@ class SignUpFormSection extends StatelessWidget {
           hintText: AppStrings.formHintName,
           textEditingController: controllerName,
         ),
-        context.sizedBoxHeight_10,
+        context.sizedBoxHeight_16,
         //----- Email -----
         CustomInputFiled(
           fieldType: FieldType.email,
@@ -43,7 +43,7 @@ class SignUpFormSection extends StatelessWidget {
           textEditingController: controllerEmail,
           prefixIcon: IconPath.email,
         ),
-        context.sizedBoxHeight_10,
+        context.sizedBoxHeight_16,
         //----- Password -----
         CustomInputFiled(
           fieldType: FieldType.password,
@@ -55,7 +55,7 @@ class SignUpFormSection extends StatelessWidget {
           suffixIconOff: IconPath.unHide,
           isPassword: true,
         ),
-        context.sizedBoxHeight_10,
+        context.sizedBoxHeight_16,
         //----- Hourly rate  -----
         CustomInputFiled(
           fieldType: FieldType.hourly,
