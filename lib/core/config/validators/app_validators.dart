@@ -1,3 +1,5 @@
+import 'package:taskora/core/config/constants/app_strings.dart';
+
 class AppValidators {
   static String? requiredField(String? value, {required String fieldLabel}) {
     final v = value?.trim() ?? "";
@@ -6,21 +8,23 @@ class AppValidators {
   }
 
   static String? email(String? value) {
+    final String label = AppStrings.validateEmail;
     // required field
-    final errorRequired = requiredField(value, fieldLabel: 'email');
+    final errorRequired = requiredField(value, fieldLabel: label);
     if (errorRequired != null) return errorRequired;
     // Valid email
     final emailRegex = RegExp(r'^[\w\.\-]+@([\w\-]+\.)+[\w\-]{2,}$');
-    if (!emailRegex.hasMatch(value!)) return 'Enter a valid email';
+    if (!emailRegex.hasMatch(value!)) return 'Enter a valid $label';
     return null;
   }
 
   static String? password(String? value, {int min = 8}) {
+    final String label = AppStrings.validateEmail;
     // required field
-    final errorRequired = requiredField(value, fieldLabel: 'password');
+    final errorRequired = requiredField(value, fieldLabel: label);
     if (errorRequired != null) return errorRequired;
     // Valid password
-    if (value!.length < min) return 'Password must be at least $min characters';
+    if (value!.length < min) return '$label must be at least $min characters';
     return null;
   }
 
@@ -38,7 +42,7 @@ class AppValidators {
   }
 
   static String? numberPinCode(String? value) {
-    final String label = 'Pin Code';
+    final String label = AppStrings.validatePinCode;
     // required field
     final errorRequired = requiredField(value, fieldLabel: label);
     if (errorRequired != null) return errorRequired;

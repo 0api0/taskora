@@ -175,4 +175,12 @@ class AppStrings {
   static const String categoryDEADLINE = 'DEADLINE';
   static const String categoryOverview = 'Overview';
   static const String categoryTASKSTATUS = 'TASK STATUS';
+
+  // Validate
+  static const String validateHourlyRate = 'Hourly Rate';
+  static const String validatePassword = 'Password';
+  static const String validateEmail = 'Email';
+  static const String validateName = 'Name';
+  static const String validateField = 'Field';
+  static const String validatePinCode = 'Pin Code';
 }
