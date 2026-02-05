@@ -50,7 +50,7 @@ class AppStrings {
   static const String titleCreateAAccount = 'Create a Account';
   static const String titleEnterYourEmailAddress = 'Enter your email address';
   static const String titleEnterCode = 'Enter Code';
-  static const String titleGreatNewPassword = 'Great new password';
+  static const String titleCreateNewPassword = 'Create new password';
   static const String titleProfile = 'Profile';
   static const String titleProjects = 'Projects';
   static const String titleProjectDetails = 'Project Details';

@@ -8,4 +8,5 @@ class RoutersName {
   static const String forgotPassword = '/forgotPassword';
   static const String resetPassword = '/resetPassword';
   static const String sendCode = '/sendCode';
+  static const String newPassword = '/newPassword';
 }
