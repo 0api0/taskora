@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:taskora/features/auth/domain/entities/user_full_data_entity.dart';
 import 'package:taskora/features/auth/params/check_reset_code_params.dart';
 import 'package:taskora/features/auth/params/forgot_password_params.dart';
 import 'package:taskora/features/auth/params/login_params.dart';
@@ -26,5 +27,5 @@ abstract class AuthRepository {
 
   Future<Either<Failure, Unit>> resetPassword(ResetPasswordParams params);
 
-  Future<Either<Failure, UserEntity>> getCurrentUser();
+  Future<Either<Failure, UserFullDataEntity>> getCurrentUser();
 }
