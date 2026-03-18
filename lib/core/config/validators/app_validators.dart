@@ -19,7 +19,7 @@ class AppValidators {
   }
 
   static String? password(String? value, {int min = 8}) {
-    final String label = AppStrings.validateEmail;
+    final String label = AppStrings.validatePassword;
     // required field
     final errorRequired = requiredField(value, fieldLabel: label);
     if (errorRequired != null) return errorRequired;
