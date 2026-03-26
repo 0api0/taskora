@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'api_constants.dart';
 
 class DioClient {
-  DioClient();
+  const DioClient();
 
   Dio create() {
     return Dio(

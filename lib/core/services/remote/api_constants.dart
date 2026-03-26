@@ -14,4 +14,5 @@ abstract final class ApiConstants {
   // Header values
   static const String applicationJson = 'application/json';
   static const String bearerPrefix = 'Bearer';
+  static const String requiresAuth = 'requiresAuth';
 }
