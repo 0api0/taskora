@@ -13,12 +13,14 @@ class LoginFooterSection extends StatelessWidget {
     required this.onCreateAccountTap,
     required this.rememberMe,
     required this.onRememberMeChanged,
+    this.isLoading = false,
   });
 
-  final VoidCallback onLoginPressed;
+  final VoidCallback? onLoginPressed;
   final VoidCallback onCreateAccountTap;
   final bool rememberMe;
   final ValueChanged<bool> onRememberMeChanged;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,11 @@ class LoginFooterSection extends StatelessWidget {
         RememberMeRow(value: rememberMe, onChanged: onRememberMeChanged),
         context.sizedBoxHeight_36,
         // -------------- Log in button ----------------
-        CustomButton(text: AppStrings.buttonLoginIn, onPressed: onLoginPressed),
+        CustomButton(
+          text: AppStrings.buttonLoginIn,
+          onPressed: onLoginPressed,
+          isLoading: isLoading,
+        ),
         context.sizedBoxHeight_10,
         // -------------- rich text row ----------------
         Center(

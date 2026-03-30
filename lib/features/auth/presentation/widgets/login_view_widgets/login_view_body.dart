@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taskora/core/router/routers_name.dart';
+import 'package:taskora/features/auth/presentation/bloc/auth/auth_state.dart';
 import 'package:taskora/features/auth/presentation/widgets/login_view_widgets/login_view_body_content.dart';
+
+import '../../../params/login_params.dart';
+import '../../bloc/auth/auth_bloc.dart';
+import '../../bloc/auth/auth_event.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -45,9 +51,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     }
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
-    //TODO: JUST TEST FOR FORGET PASSWORD
-    context.push(RoutersName.authRoute.forgotPassword);
-    // TODO: Bloc
+    context.read<AuthBloc>().add(
+      LoginRequested(LoginParams(email: email, password: password)),
+    );
   }
 
   void _onCreateAccountTap() {
@@ -56,14 +62,43 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return LoginViewBodyContent(
-      formKey: _formKey,
-      controllerEmail: _controllerEmail,
-      controllerPassword: _controllerPassword,
-      rememberMe: _rememberMe,
-      onRememberMeChanged: _onRememberMeChanged,
-      onLoginPressed: _onLoginPressed,
-      onCreateAccountTap: _onCreateAccountTap,
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.status == AuthStatus.failure &&
+            state.message != null &&
+            state.message!.isNotEmpty) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message!)));
+        }
+
+        if (state.status == AuthStatus.unauthenticated &&
+            state.message != null &&
+            state.message!.isNotEmpty) {
+          context.push(RoutersName.authRoute.forgotPassword);
+        }
+
+        if (state.status == AuthStatus.authenticated) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Logged in successfully')),
+          );
+
+          context.go(RoutersName.splashOnboardingRoute.home);
+        }
+      },
+      builder: (context, state) {
+        final bool isLoading = state.status == AuthStatus.loading;
+        return LoginViewBodyContent(
+          formKey: _formKey,
+          controllerEmail: _controllerEmail,
+          controllerPassword: _controllerPassword,
+          rememberMe: _rememberMe,
+          onRememberMeChanged: _onRememberMeChanged,
+          onLoginPressed: isLoading ? null : _onLoginPressed,
+          onCreateAccountTap: _onCreateAccountTap,
+          isLoading: isLoading,
+        );
+      },
     );
   }
 }
