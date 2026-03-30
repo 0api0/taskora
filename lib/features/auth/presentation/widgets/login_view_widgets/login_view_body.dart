@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/router/routers_name.dart';
-import 'login_footer_section.dart';
-import 'login_form_section.dart';
-import 'login_header_section.dart';
+import 'package:taskora/features/auth/presentation/widgets/login_view_widgets/login_view_body_content.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -59,31 +56,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddingScaffold,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                const LoginHeaderSection(),
-                LoginFormSection(
-                  controllerEmail: _controllerEmail,
-                  controllerPassword: _controllerPassword,
-                ),
-                LoginFooterSection(
-                  onLoginPressed: _onLoginPressed,
-                  onCreateAccountTap: _onCreateAccountTap,
-                  rememberMe: _rememberMe,
-                  onRememberMeChanged: _onRememberMeChanged,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return LoginViewBodyContent(
+      formKey: _formKey,
+      controllerEmail: _controllerEmail,
+      controllerPassword: _controllerPassword,
+      rememberMe: _rememberMe,
+      onRememberMeChanged: _onRememberMeChanged,
+      onLoginPressed: _onLoginPressed,
+      onCreateAccountTap: _onCreateAccountTap,
     );
   }
 }
