@@ -12,6 +12,8 @@ import '../../../features/auth/domain/usecases/get_current_user_use_case.dart';
 import '../../../features/auth/domain/usecases/login_use_case.dart';
 import '../../../features/auth/domain/usecases/register_usecase.dart';
 import '../../../features/auth/domain/usecases/reset_password_use_case.dart';
+import '../../../features/auth/presentation/bloc/auth/auth_bloc.dart';
+import '../../../features/auth/presentation/bloc/password_recovery/password_recovery_bloc.dart';
 import '../../services/local/shared_pref_service.dart';
 import '../../services/remote/interceptors/auth_interceptor.dart';
 import '../../services/remote/remote_service.dart';
@@ -69,5 +71,21 @@ void setUpAuthDI(GetIt sl) {
 
   sl.registerLazySingleton<GetCurrentUserUseCase>(
     () => GetCurrentUserUseCase(sl<AuthRepository>()),
+  );
+  // -- blocs --
+  sl.registerFactory<AuthBloc>(
+    () => AuthBloc(
+      loginUseCase: sl<LoginUseCase>(),
+      registerUseCase: sl<RegisterUseCase>(),
+      getCurrentUserUseCase: sl<GetCurrentUserUseCase>(),
+    ),
+  );
+
+  sl.registerFactory<PasswordRecoveryBloc>(
+    () => PasswordRecoveryBloc(
+      forgotPasswordUseCase: sl<ForgotPasswordUseCase>(),
+      checkResetCodeUseCase: sl<CheckResetCodeUseCase>(),
+      resetPasswordUseCase: sl<ResetPasswordUseCase>(),
+    ),
   );
 }
