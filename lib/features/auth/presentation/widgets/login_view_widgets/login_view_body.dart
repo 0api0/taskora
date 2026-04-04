@@ -64,12 +64,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state.status == AuthStatus.failure &&
+        if ((state.status == AuthStatus.failure ||
+                state.status == AuthStatus.networkFailure) &&
             state.message != null &&
             state.message!.isNotEmpty) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.message!)));
+          context.push(
+            RoutersName.authRoute.bodyError,
+            extra: {'message': state.message, 'status': state.status},
+          );
         }
 
         if (state.status == AuthStatus.unauthenticated &&
