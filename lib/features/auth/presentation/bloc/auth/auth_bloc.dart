@@ -25,9 +25,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase _loginUseCase;
   final RegisterUseCase _registerUseCase;
   final GetCurrentUserUseCase _getCurrentUserUseCase;
+  int countLog = 0;
 
   // ********************** on events ********************************
   Future<void> _onLoginRequested(event, emit) async {
+    if (countLog == 2) {
+      emit(
+        state.copyWith(
+          status: AuthStatus.failure,
+          message: 'Your attempts are over... try later',
+          clearValidationErrors: true,
+          clearSession: true,
+        ),
+      );
+      return;
+    }
     emit(
       state.copyWith(
         status: AuthStatus.loading,
@@ -48,6 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ),
       );
     });
+    countLog++;
   }
 
   Future<void> _onRegisterRequested(event, emit) async {
@@ -106,7 +119,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         validationErrors: failure.errors,
       );
     }
-
+    if (failure is NetworkFailure) {
+      return state.copyWith(
+        status: AuthStatus.networkFailure,
+        message: failure.message,
+        clearValidationErrors: true,
+      );
+    }
     if (failure is UnauthorizedFailure) {
       return state.copyWith(
         status: AuthStatus.unauthenticated,

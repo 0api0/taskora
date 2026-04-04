@@ -10,6 +10,7 @@ enum AuthStatus {
   authenticated,
   unauthenticated,
   failure,
+  networkFailure,
 }
 
 @immutable
