@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:taskora/features/auth/presentation/bloc/auth/auth_state.dart';
+import 'package:taskora/features/auth/presentation/views/body_error_view.dart';
 
 import '../../../../core/router/routers_name.dart';
 import '../../../features/auth/presentation/views/forgot_password_view.dart';
@@ -32,5 +34,15 @@ final List<GoRoute> authRoutes = [
   GoRoute(
     path: RoutersName.authRoute.newPassword,
     builder: (context, state) => const NewPasswordView(),
+  ),
+  GoRoute(
+    path: RoutersName.authRoute.bodyError,
+    builder: (context, state) {
+      final data = state.extra as Map<String, dynamic>?;
+      return BodyErrorView(
+        message: data?['message'] ?? 'Something errors',
+        status: data?['status'] ?? AuthStatus.failure,
+      );
+    },
   ),
 ];

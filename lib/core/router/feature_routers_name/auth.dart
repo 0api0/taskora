@@ -6,4 +6,5 @@ class AuthNameRoutes {
   String get resetPassword => '/resetPassword';
   String get sendCode => '/sendCode';
   String get newPassword => '/newPassword';
+  String get bodyError => '/bodyError';
 }
