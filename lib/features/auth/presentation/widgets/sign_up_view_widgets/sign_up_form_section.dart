@@ -14,9 +14,11 @@ class SignUpFormSection extends StatelessWidget {
     required this.controllerEmail,
     required this.controllerPassword,
     required this.controllerHourlyRate,
+    required this.controllerUserName,
   });
 
   final TextEditingController controllerName;
+  final TextEditingController controllerUserName;
   final TextEditingController controllerEmail;
   final TextEditingController controllerPassword;
   final TextEditingController controllerHourlyRate;
@@ -33,6 +35,14 @@ class SignUpFormSection extends StatelessWidget {
           text: AppStrings.formName,
           hintText: AppStrings.formHintName,
           textEditingController: controllerName,
+        ),
+        context.sizedBoxHeight_16,
+        //----- user Name -----
+        CustomInputFiled(
+          fieldType: FieldType.field,
+          text: AppStrings.formUserName,
+          hintText: AppStrings.formHintUserName,
+          textEditingController: controllerUserName,
         ),
         context.sizedBoxHeight_16,
         //----- Email -----

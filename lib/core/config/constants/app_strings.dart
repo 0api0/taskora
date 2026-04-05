@@ -67,6 +67,8 @@ class AppStrings {
   static const String formHintPassword = 'xxxxxxxxx';
   static const String formName = 'Name';
   static const String formHintName = 'Enter Your Name';
+  static const String formUserName = 'User Name';
+  static const String formHintUserName = 'User Name';
   static const String formRememberMe = 'Remember me';
   static const String formCreateAccountButton = ' Create an account';
   static const String formCreateAccount = 'Don\'t have an account?';
