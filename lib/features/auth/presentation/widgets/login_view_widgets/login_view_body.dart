@@ -52,7 +52,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     final email = _controllerEmail.text.trim();
     final password = _controllerPassword.text;
     context.read<AuthBloc>().add(
-      LoginRequested(LoginParams(email: email, password: password)),
+      LoginRequested(
+        LoginParams(email: email, password: password, rememberMe: _rememberMe),
+      ),
     );
   }
 
