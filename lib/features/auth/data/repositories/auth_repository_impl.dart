@@ -8,6 +8,7 @@ import 'package:taskora/features/auth/domain/entities/forgot_password_verificati
 import 'package:taskora/features/auth/domain/entities/user_entity.dart';
 import 'package:taskora/features/auth/domain/entities/user_full_data_entity.dart';
 import 'package:taskora/features/auth/domain/repositories/auth_repository.dart';
+import 'package:taskora/features/auth/domain/repositories/auth_session_manager_store.dart';
 import 'package:taskora/features/auth/params/check_reset_code_params.dart';
 import 'package:taskora/features/auth/params/forgot_password_params.dart';
 import 'package:taskora/features/auth/params/login_params.dart';
@@ -20,10 +21,12 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl({
     required this.authLocalDataSource,
     required this.authRemoteDataSource,
+    required this.authSessionStore,
   });
 
   final AuthRemoteDataSource authRemoteDataSource;
   final AuthLocalDataSource authLocalDataSource;
+  final AuthSessionStore authSessionStore;
 
   @override
   Future<Either<Failure, UserEntity>> register(RegisterParams params) async {
@@ -46,10 +49,17 @@ class AuthRepositoryImpl extends AuthRepository {
         params,
       );
 
-      await authLocalDataSource.saveToken(session.accessToken);
-      await authLocalDataSource.saveUserEmail(session.user.email);
-      await authLocalDataSource.saveUserName(session.user.username ?? '');
-
+      authSessionStore.setSession(
+        token: session.accessToken,
+        email: session.user.email,
+      );
+      await authLocalDataSource.saveRememberMe(params.rememberMe);
+      if (params.rememberMe) {
+        await authLocalDataSource.saveToken(session.accessToken);
+        await authLocalDataSource.saveUserEmail(session.user.email);
+      } else {
+        await authLocalDataSource.clearSession();
+      }
       return Right(session);
     } on ApiException catch (exception) {
       return Left(_mapExceptionToFailure(exception));
