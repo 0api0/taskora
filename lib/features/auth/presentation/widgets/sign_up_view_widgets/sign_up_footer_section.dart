@@ -10,10 +10,12 @@ class SignUpFooterSection extends StatelessWidget {
     super.key,
     required this.onCreateAccountPressed,
     required this.onLoginTap,
+    required this.isLoading,
   });
 
-  final VoidCallback onCreateAccountPressed;
+  final VoidCallback? onCreateAccountPressed;
   final VoidCallback onLoginTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class SignUpFooterSection extends StatelessWidget {
         CustomButton(
           text: AppStrings.formCreateAccountButton,
           onPressed: onCreateAccountPressed,
+          isLoading: isLoading,
         ),
         context.sizedBoxHeight_10,
         // -------------- rich text row ----------------
