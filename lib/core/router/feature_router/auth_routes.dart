@@ -42,6 +42,7 @@ final List<GoRoute> authRoutes = [
       return BodyErrorView(
         message: data?['message'] ?? 'Something errors',
         status: data?['status'] ?? AuthStatus.failure,
+        errors: data?['errors'],
       );
     },
   ),

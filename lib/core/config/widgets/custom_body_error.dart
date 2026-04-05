@@ -14,6 +14,7 @@ class CustomBodyError extends StatelessWidget {
     required this.textButtonOutline,
     this.onPressed,
     this.onPressedOutline,
+    this.errorData,
   });
 
   final String image;
@@ -21,6 +22,7 @@ class CustomBodyError extends StatelessWidget {
   final String textButton;
   final String textButtonOutline;
   final String subTitle;
+  final String? errorData;
   final Function()? onPressed;
   final Function()? onPressedOutline;
 
@@ -41,6 +43,11 @@ class CustomBodyError extends StatelessWidget {
           context.sizedBoxHeight_4,
           Text(
             subTitle,
+            style: context.regular.copyWith(color: ColorManager.textHintColor),
+          ),
+          context.sizedBoxHeight_4,
+          Text(
+            errorData ?? '',
             style: context.regular.copyWith(color: ColorManager.textHintColor),
           ),
           context.sizedBoxHeight_36,
