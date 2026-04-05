@@ -16,12 +16,16 @@ class SplashViewBloc extends StatelessWidget {
     return BlocListener<SplashOnboardingBloc, SplashOnboardingState>(
       listener: (context, state) async {
         await Future.delayed(const Duration(milliseconds: 2000));
-
-        if (state is NavigateToHome) {
-          context.go(RoutersName.authRoute.login);
-        }
-        if (state is ShowOnboarding) {
-          context.go(RoutersName.splashOnboardingRoute.onboarding);
+        switch (state) {
+          case ShowOnboarding _:
+            context.go(RoutersName.splashOnboardingRoute.onboarding);
+            return;
+          case NavigateToLogin _:
+            context.go(RoutersName.authRoute.login);
+            return;
+          case NavigateToHome _:
+            context.go(RoutersName.splashOnboardingRoute.home);
+            return;
         }
       },
       child: const SplashViewBody(),
