@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/features/auth/params/register_params.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth/auth_event.dart';
-import 'package:taskora/features/auth/presentation/widgets/sign_up_view_widgets/sign_up_footer_section.dart';
-import 'package:taskora/features/auth/presentation/widgets/sign_up_view_widgets/sign_up_form_section.dart';
-import 'package:taskora/features/auth/presentation/widgets/sign_up_view_widgets/sign_up_header_section.dart';
+import 'package:taskora/features/auth/presentation/bloc/auth/auth_state.dart';
+import 'package:taskora/features/auth/presentation/widgets/sign_up_view_widgets/sign_up_view_body_content.dart';
+import '../../../../../core/router/routers_name.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -71,7 +70,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         ),
       ),
     );
-    context.pop();
   }
 
   void _onLoginTap() {
@@ -80,32 +78,46 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddingScaffold,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                const SignUpHeaderSection(),
-                SignUpFormSection(
-                  controllerName: _controllerName,
-                  controllerEmail: _controllerEmail,
-                  controllerPassword: _controllerPassword,
-                  controllerHourlyRate: _controllerHourlyRate,
-                  controllerUserName: _controllerUserName,
-                ),
-                SignUpFooterSection(
-                  onCreateAccountPressed: _onCreateAccountPressed,
-                  onLoginTap: _onLoginTap,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if ((state.status == AuthStatus.failure ||
+                state.status == AuthStatus.networkFailure) &&
+            state.message != null &&
+            state.message!.isNotEmpty) {
+          context.push(
+            RoutersName.authRoute.bodyError,
+            extra: {
+              'message': state.message,
+              'status': state.status,
+              'errors': state.validationErrors,
+            },
+          );
+        }
+
+        if (state.status == AuthStatus.success &&
+            state.message != null &&
+            state.message!.isNotEmpty) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message!)));
+
+          context.pop();
+        }
+      },
+      builder: (context, state) {
+        final bool isLoading = state.status == AuthStatus.loading;
+        return SignUpViewBodyContent(
+          formKey: _formKey,
+          controllerName: _controllerName,
+          controllerUserName: _controllerUserName,
+          controllerEmail: _controllerEmail,
+          controllerPassword: _controllerPassword,
+          controllerHourlyRate: _controllerHourlyRate,
+          onCreateAccountPressed: isLoading ? null : _onCreateAccountPressed,
+          onLoginTap: _onLoginTap,
+          isLoading: isLoading,
+        );
+      },
     );
   }
 }
