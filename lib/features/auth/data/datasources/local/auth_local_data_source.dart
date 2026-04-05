@@ -10,6 +10,11 @@ abstract class AuthLocalDataSource {
   // username
   Future<bool> saveUserName(String userName);
   String? getUserName();
+
+  // remember me
+  Future<bool> saveRememberMe(bool value);
+  bool getRememberMe();
+
   // Common
   Future<bool> clearSession();
   bool hasToken();

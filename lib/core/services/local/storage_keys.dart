@@ -6,5 +6,6 @@ abstract final class StorageKeys {
   static const String authToken = 'auth.token';
   static const String userEmail = 'auth.user_email';
   static const String userName = 'auth.user_userName';
+  static const String rememberMe = 'auth.remember_me';
   //TODO: others keys ....
 }

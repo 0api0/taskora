@@ -47,6 +47,21 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     return userName;
   }
 
+  //////////// remember me /////////////
+
+  @override
+  bool getRememberMe() {
+    return _sharedPrefService.getBool(
+      StorageKeys.rememberMe,
+      defaultValue: false,
+    );
+  }
+
+  @override
+  Future<bool> saveRememberMe(bool value) {
+    return _sharedPrefService.setBool(StorageKeys.rememberMe, true);
+  }
+
   //////////// Common ////////////////
   @override
   Future<bool> clearSession() async {
@@ -58,7 +73,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       StorageKeys.userEmail,
     );
 
-    return removedToken && removedEmail;
+    final bool removedRememberMe = await _sharedPrefService.remove(
+      StorageKeys.rememberMe,
+    );
+    return removedToken && removedEmail && removedRememberMe;
   }
 
   @override
