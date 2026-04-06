@@ -3,7 +3,13 @@ import 'package:flutter/foundation.dart';
 import '../../../domain/entities/code_verification_entity.dart';
 import '../../../domain/entities/forgot_password_verification_entity.dart';
 
-enum PasswordRecoveryStatus { initial, loading, success, failure }
+enum PasswordRecoveryStatus {
+  initial,
+  loading,
+  success,
+  failure,
+  networkFailure,
+}
 
 @immutable
 class PasswordRecoveryState {

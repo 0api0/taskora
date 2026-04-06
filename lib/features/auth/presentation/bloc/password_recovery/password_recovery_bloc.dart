@@ -100,6 +100,12 @@ class PasswordRecoveryBloc
   }
 
   PasswordRecoveryState _mapFailureToState(Failure failure) {
+    if (failure is NetworkFailure) {
+      return state.copyWith(
+        status: PasswordRecoveryStatus.networkFailure,
+        message: failure.message,
+      );
+    }
     return state.copyWith(
       status: PasswordRecoveryStatus.failure,
       message: failure.message,
