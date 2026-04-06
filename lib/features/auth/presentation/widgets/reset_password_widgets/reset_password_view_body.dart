@@ -1,38 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:taskora/core/config/constants/app_strings.dart';
-import 'package:taskora/core/config/constants/color_manager.dart';
-import 'package:taskora/core/config/widgets/custom_app_bar.dart';
-import 'package:taskora/core/extensions/sizes_extension.dart';
-import 'package:taskora/core/extensions/text_style_extension.dart';
-import 'package:taskora/features/auth/presentation/widgets/reset_password_widgets/reset_password_footer_section.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:taskora/features/auth/params/forgot_password_params.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_bloc.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_event.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_state.dart';
+import 'package:taskora/features/auth/presentation/widgets/reset_password_widgets/reset_password_view_body_content.dart';
 
-class ResetPasswordViewBody extends StatelessWidget {
+import '../../../../../core/router/routers_name.dart';
+
+class ResetPasswordViewBody extends StatefulWidget {
   const ResetPasswordViewBody({super.key});
 
   @override
+  State<ResetPasswordViewBody> createState() => _ResetPasswordViewBodyState();
+}
+
+class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
+  late final TextEditingController _controllerEmail;
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _controllerEmail = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controllerEmail.dispose();
+    super.dispose();
+  }
+
+  void _onContinuePressed() {
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      return;
+    }
+    final email = _controllerEmail.text.trim();
+    context.read<PasswordRecoveryBloc>().add(
+      ForgotPasswordRequested(ForgotPasswordParams(email: email)),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddingScaffold,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // -------------- Header ----------------
-              const CustomAppBar(title: AppStrings.titleEnterYourEmailAddress),
-              Text(
-                AppStrings.messgaesSubReceiveCode,
-                style: context.regular.copyWith(
-                  color: ColorManager.textHintColor,
-                ),
-              ),
-              // -------------- Footer ----------------
-              const ResetPasswordFooterSection(),
-            ],
-          ),
-        ),
-      ),
+    return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
+      listener: (context, state) {
+        if ((state.status == PasswordRecoveryStatus.failure ||
+                state.status == PasswordRecoveryStatus.networkFailure) &&
+            state.message != null &&
+            state.message!.isNotEmpty) {
+          context.push(
+            RoutersName.authRoute.bodyError,
+            extra: {
+              'message': state.message,
+              'passwordRecoveryStatus': state.status,
+            },
+          );
+        }
+
+        if (state.status == PasswordRecoveryStatus.success) {
+          context.push(RoutersName.authRoute.sendCode);
+        }
+      },
+      builder: (context, state) {
+        final bool isLoading = state.status == PasswordRecoveryStatus.loading;
+        return ResetPasswordViewBodyContent(
+          formKey: _formKey,
+          controllerEmail: _controllerEmail,
+          isLoading: isLoading,
+          onContinuePressed: isLoading ? null : _onContinuePressed,
+        );
+      },
     );
   }
 }

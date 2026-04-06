@@ -9,45 +9,24 @@ import '../../../../../core/config/validators/vlaidate_fun.dart';
 import '../../../../../core/config/widgets/custom_button/custom_button.dart';
 import '../../../../../core/config/widgets/custom_input_field/custom_input_field.dart';
 
-class ResetPasswordFooterSection extends StatefulWidget {
-  const ResetPasswordFooterSection({super.key});
+class ResetPasswordFooterSection extends StatelessWidget {
+  const ResetPasswordFooterSection({
+    super.key,
+    required this.formKey,
+    required this.controllerEmail,
+    this.onContinuePressed,
+    required this.isLoading,
+  });
 
-  @override
-  State<ResetPasswordFooterSection> createState() =>
-      _ResetPasswordFooterSectionState();
-}
-
-class _ResetPasswordFooterSectionState
-    extends State<ResetPasswordFooterSection> {
-  late final TextEditingController _controllerEmail;
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _controllerEmail = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controllerEmail.dispose();
-    super.dispose();
-  }
-
-  void _onContinuePressed() {
-    final isValid = _formKey.currentState?.validate() ?? false;
-    if (!isValid) {
-      return;
-    }
-    final email = _controllerEmail.text.trim();
-    context.push(RoutersName.authRoute.sendCode);
-    // TODO: Bloc
-  }
+  final GlobalKey<FormState> formKey;
+  final TextEditingController controllerEmail;
+  final VoidCallback? onContinuePressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         children: [
           // -------------- Field email  ----------------
@@ -56,7 +35,7 @@ class _ResetPasswordFooterSectionState
             fieldType: FieldType.email,
             text: AppStrings.formEmail,
             hintText: AppStrings.formHintEmail,
-            textEditingController: _controllerEmail,
+            textEditingController: controllerEmail,
             prefixIcon: IconPath.email,
             keyboardType: TextInputType.emailAddress,
           ),
@@ -65,7 +44,8 @@ class _ResetPasswordFooterSectionState
           // -------------- Log in button ----------------
           CustomButton(
             text: AppStrings.buttonContinue,
-            onPressed: _onContinuePressed,
+            onPressed: onContinuePressed,
+            isLoading: isLoading,
           ),
         ],
       ),
