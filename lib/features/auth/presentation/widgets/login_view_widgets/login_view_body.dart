@@ -72,7 +72,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             state.message!.isNotEmpty) {
           context.push(
             RoutersName.authRoute.bodyError,
-            extra: {'message': state.message, 'status': state.status},
+            extra: {'message': state.message, 'authStatus': state.status},
           );
         }
 
