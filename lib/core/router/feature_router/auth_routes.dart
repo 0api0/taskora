@@ -1,9 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth/auth_state.dart';
 import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_state.dart';
 import 'package:taskora/features/auth/presentation/views/body_error_view.dart';
 
 import '../../../../core/router/routers_name.dart';
+import '../../../features/auth/presentation/bloc/password_recovery/password_recovery_bloc.dart';
 import '../../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../../features/auth/presentation/views/login_view.dart';
 import '../../../features/auth/presentation/views/new_password_view.dart';
@@ -30,11 +32,18 @@ final List<GoRoute> authRoutes = [
   ),
   GoRoute(
     path: RoutersName.authRoute.sendCode,
-    builder: (context, state) => const SendCodeView(),
+    builder: (context, state) {
+      final PasswordRecoveryBloc bloc = state.extra as PasswordRecoveryBloc;
+      return BlocProvider.value(value: bloc, child: const SendCodeView());
+    },
   ),
   GoRoute(
     path: RoutersName.authRoute.newPassword,
-    builder: (context, state) => const NewPasswordView(),
+    builder: (context, state) {
+      final PasswordRecoveryBloc bloc = state.extra as PasswordRecoveryBloc;
+
+      return BlocProvider.value(value: bloc, child: const NewPasswordView());
+    },
   ),
   GoRoute(
     path: RoutersName.authRoute.bodyError,
