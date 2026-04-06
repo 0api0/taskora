@@ -1,13 +1,14 @@
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
-import 'package:taskora/features/auth/presentation/bloc/auth/auth_state.dart';
 
 import '../model/error_view_data.dart';
 
+enum ErrorViewType { network, general }
+
 class ErrorViewDataMapper {
-  static ErrorViewData map({required AuthStatus? status}) {
-    switch (status) {
-      case AuthStatus.networkFailure:
+  static ErrorViewData map({ErrorViewType? errorViewType}) {
+    switch (errorViewType) {
+      case ErrorViewType.network:
         return const ErrorViewData(
           imagePath: ImagePath.internetError,
           title: AppStrings.messgaesNoInternetConnection,
