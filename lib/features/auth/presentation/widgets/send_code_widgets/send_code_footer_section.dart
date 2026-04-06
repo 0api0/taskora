@@ -6,16 +6,25 @@ import '../../../../../core/config/widgets/custom_button/custom_button.dart';
 import '../../../../../core/config/widgets/custom_rich_text.dart';
 
 class SendCodeFooterSection extends StatelessWidget {
-  const SendCodeFooterSection({super.key, required this.onPressed});
+  const SendCodeFooterSection({
+    super.key,
+    required this.onPressed,
+    required this.isLoading,
+  });
 
-  final Function() onPressed;
+  final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         context.sizedBoxHeight_60,
-        CustomButton(text: AppStrings.buttonVerifyEmail, onPressed: onPressed),
+        CustomButton(
+          text: AppStrings.buttonVerifyEmail,
+          onPressed: onPressed,
+          isLoading: isLoading,
+        ),
         context.sizedBoxHeight_10,
         CustomRichTextRow(
           text: AppStrings.formReCode,

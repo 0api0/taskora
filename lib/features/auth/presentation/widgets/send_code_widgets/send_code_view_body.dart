@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/router/routers_name.dart';
-import 'package:taskora/features/auth/presentation/widgets/send_code_widgets/send_code_footer_section.dart';
-import 'package:taskora/features/auth/presentation/widgets/send_code_widgets/send_code_form_section.dart';
-import 'package:taskora/features/auth/presentation/widgets/send_code_widgets/send_code_header.dart';
+import 'package:taskora/features/auth/presentation/widgets/send_code_widgets/send_code_view_body_content.dart';
 
 class SendCodeViewBody extends StatefulWidget {
   const SendCodeViewBody({super.key});
@@ -41,30 +38,9 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddingScaffold,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                // -------------- Header ----------------
-                const SendCodeHeader(),
-                // -------------- body ----------------
-                SendCodeFormSection(controllerPinCode: _controllerPinCode),
-                // -------------- Footer ----------------
-                SendCodeFooterSection(
-                  onPressed: () {
-                    _onVerifyCodePressed();
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return SendCodeViewBodyContent(
+      isLoading:, controllerPinCode: _controllerPinCode,
+      formKey: _formKey,
+      onVerifyCodePressed: _onVerifyCodePressed,);
   }
 }
