@@ -39,11 +39,10 @@ class PasswordRecoveryState {
       message: clearMessage ? null : (message ?? this.message),
       forgotPasswordVerification: clearForgotPasswordVerification
           ? null
-          : (forgotPasswordVerificationEntity ??
-                this.forgotPasswordVerification),
+          : (forgotPasswordVerificationEntity ?? forgotPasswordVerification),
       codeVerification: clearCodeVerification
           ? null
-          : (codeVerificationEntity ?? this.codeVerification),
+          : (codeVerificationEntity ?? codeVerification),
     );
   }
 }
