@@ -10,14 +10,11 @@ class SendCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<PasswordRecoveryBloc>(),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: const Scaffold(
-          resizeToAvoidBottomInset: true,
-          body: SendCodeViewBody(),
-        ),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: const Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: SendCodeViewBody(),
       ),
     );
   }

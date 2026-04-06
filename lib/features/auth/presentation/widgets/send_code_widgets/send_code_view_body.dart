@@ -67,7 +67,10 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
 
         if (state.status == PasswordRecoveryStatus.success &&
             state.codeVerification != null) {
-          context.push(RoutersName.authRoute.newPassword);
+          context.push(
+            RoutersName.authRoute.newPassword,
+            extra: context.read<PasswordRecoveryBloc>(),
+          );
         }
       },
       builder: (context, state) {

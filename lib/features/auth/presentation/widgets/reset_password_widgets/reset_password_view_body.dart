@@ -61,7 +61,10 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
         }
 
         if (state.status == PasswordRecoveryStatus.success) {
-          context.push(RoutersName.authRoute.sendCode);
+          context.push(
+            RoutersName.authRoute.sendCode,
+            extra: context.read<PasswordRecoveryBloc>(),
+          );
         }
       },
       builder: (context, state) {
