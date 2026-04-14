@@ -185,4 +185,6 @@ class AppStrings {
   static const String validateName = 'Name';
   static const String validateField = 'Field';
   static const String validatePinCode = 'Pin Code';
+  static const String validateConfirmPasswordNotMatch =
+      'Passwords do not match';
 }

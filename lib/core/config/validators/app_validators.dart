@@ -28,6 +28,24 @@ class AppValidators {
     return null;
   }
 
+  static String? confirmPassword(
+    String? value, {
+    required String originalPassword,
+  }) {
+    final String label = AppStrings.formConfirmPassword;
+
+    final String? errorRequired = requiredField(value, fieldLabel: label);
+    if (errorRequired != null) {
+      return errorRequired;
+    }
+
+    if (value!.trim() != originalPassword.trim()) {
+      return AppStrings.validateConfirmPasswordNotMatch;
+    }
+
+    return null;
+  }
+
   static String? doubleNumber(String? value, {required String fieldLabel}) {
     // required field
     final errorRequired = requiredField(value, fieldLabel: fieldLabel);
