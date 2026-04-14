@@ -11,6 +11,8 @@ enum PasswordRecoveryStatus {
   networkFailure,
 }
 
+enum PasswordRecoveryStep { enterEmail, enterCode, enterNewPassword, completed }
+
 @immutable
 class PasswordRecoveryState {
   const PasswordRecoveryState({
@@ -18,15 +20,18 @@ class PasswordRecoveryState {
     this.message,
     this.forgotPasswordVerification,
     this.codeVerification,
+    this.step = PasswordRecoveryStep.enterEmail,
   });
 
   final PasswordRecoveryStatus status;
+  final PasswordRecoveryStep step;
   final String? message;
   final ForgotPasswordVerificationEntity? forgotPasswordVerification;
   final CodeVerificationEntity? codeVerification;
 
   PasswordRecoveryState copyWith({
     PasswordRecoveryStatus? status,
+    PasswordRecoveryStep? step,
     String? message,
     ForgotPasswordVerificationEntity? forgotPasswordVerificationEntity,
     CodeVerificationEntity? codeVerificationEntity,
@@ -36,6 +41,7 @@ class PasswordRecoveryState {
   }) {
     return PasswordRecoveryState(
       status: status ?? this.status,
+      step: step ?? this.step,
       message: clearMessage ? null : (message ?? this.message),
       forgotPasswordVerification: clearForgotPasswordVerification
           ? null

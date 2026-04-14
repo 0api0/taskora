@@ -20,8 +20,8 @@ class PasswordRecoveryBloc
     on<ForgotPasswordRequested>(_onForgotPasswordRequested);
     on<CheckResetCodeRequested>(_onCheckResetCodeRequested);
     on<ResetPasswordRequested>(_onResetPasswordRequested);
-    on<ResetPasswordRecoveryStateRequested>(
-      _onResetPasswordRecoveryStateRequested,
+    on<ClearPasswordRecoveryStatusRequested>(
+      _onClearPasswordRecoveryStatusRequested,
     );
   }
 
@@ -42,6 +42,7 @@ class PasswordRecoveryBloc
     result.fold((failure) => emit(_mapFailureToState(failure)), (verification) {
       emit(
         state.copyWith(
+          step: PasswordRecoveryStep.enterCode,
           status: PasswordRecoveryStatus.success,
           forgotPasswordVerificationEntity: verification,
           message: 'User verified successfully',
@@ -66,6 +67,7 @@ class PasswordRecoveryBloc
     ) {
       emit(
         state.copyWith(
+          step: PasswordRecoveryStep.enterNewPassword,
           status: PasswordRecoveryStatus.success,
           codeVerificationEntity: codeVerification,
           message: 'Code verified successfully.',
@@ -87,16 +89,23 @@ class PasswordRecoveryBloc
     result.fold((failure) => emit(_mapFailureToState(failure)), (_) {
       emit(
         state.copyWith(
+          step: PasswordRecoveryStep.completed,
           status: PasswordRecoveryStatus.success,
           message: 'Password reset successfully.',
           clearCodeVerification: true,
+          clearForgotPasswordVerification: true,
         ),
       );
     });
   }
 
-  void _onResetPasswordRecoveryStateRequested(event, emit) {
-    emit(const PasswordRecoveryState());
+  void _onClearPasswordRecoveryStatusRequested(event, emit) {
+    emit(
+      state.copyWith(
+        status: PasswordRecoveryStatus.initial,
+        clearMessage: true,
+      ),
+    );
   }
 
   PasswordRecoveryState _mapFailureToState(Failure failure) {

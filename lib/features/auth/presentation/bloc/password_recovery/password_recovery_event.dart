@@ -30,3 +30,7 @@ final class ResetPasswordRequested extends PasswordRecoveryEvent {
 final class ResetPasswordRecoveryStateRequested extends PasswordRecoveryEvent {
   const ResetPasswordRecoveryStateRequested();
 }
+
+final class ClearPasswordRecoveryStatusRequested extends PasswordRecoveryEvent {
+  const ClearPasswordRecoveryStatusRequested();
+}
