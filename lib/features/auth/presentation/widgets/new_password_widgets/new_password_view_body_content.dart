@@ -15,12 +15,14 @@ class NewPasswordViewBodyContent extends StatelessWidget {
     required this.controllerPassword,
     required this.controllerConfirmPassword,
     this.onChangePasswordPressed,
+    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController controllerPassword;
   final TextEditingController controllerConfirmPassword;
   final VoidCallback? onChangePasswordPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,7 @@ class NewPasswordViewBodyContent extends StatelessWidget {
                 CustomButton(
                   text: AppStrings.buttonChangePassword,
                   onPressed: onChangePasswordPressed,
+                  isLoading: isLoading,
                 ),
               ],
             ),
