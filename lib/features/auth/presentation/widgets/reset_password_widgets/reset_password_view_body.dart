@@ -46,9 +46,12 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
+      listenWhen: (previous, current) =>
+          previous.status != current.status || previous.step != current.step,
       listener: (context, state) {
         if ((state.status == PasswordRecoveryStatus.failure ||
                 state.status == PasswordRecoveryStatus.networkFailure) &&
+            state.step == PasswordRecoveryStep.enterEmail &&
             state.message != null &&
             state.message!.isNotEmpty) {
           context.push(
@@ -58,9 +61,20 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
               'passwordRecoveryStatus': state.status,
             },
           );
+          if (!context.mounted) {
+            return;
+          }
+
+          context.read<PasswordRecoveryBloc>().add(
+            const ClearPasswordRecoveryStatusRequested(),
+          );
+
+          return;
         }
 
-        if (state.status == PasswordRecoveryStatus.success) {
+        if (state.status == PasswordRecoveryStatus.success &&
+            state.step == PasswordRecoveryStep.enterCode &&
+            state.forgotPasswordVerification != null) {
           context.push(
             RoutersName.authRoute.sendCode,
             extra: context.read<PasswordRecoveryBloc>(),

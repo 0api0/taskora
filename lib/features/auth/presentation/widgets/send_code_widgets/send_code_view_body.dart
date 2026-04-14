@@ -46,30 +46,41 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
-      listener: (context, state) {
-        debugPrint('status: ${state.status}');
-        debugPrint(
-          'codeVerificationEntity: ${state.forgotPasswordVerification}',
-        );
-        debugPrint('message: ${state.message}');
+      listenWhen: (previous, current) =>
+          previous.status != current.status || previous.step != current.step,
+      listener: (context, state) async {
         if ((state.status == PasswordRecoveryStatus.failure ||
                 state.status == PasswordRecoveryStatus.networkFailure) &&
+            state.step == PasswordRecoveryStep.enterCode &&
             state.message != null &&
             state.message!.isNotEmpty) {
-          context.push(
+          await context.push(
             RoutersName.authRoute.bodyError,
             extra: {
               'message': state.message,
               'passwordRecoveryStatus': state.status,
             },
           );
+          if (!context.mounted) {
+            return;
+          }
+
+          context.read<PasswordRecoveryBloc>().add(
+            const ResetPasswordRecoveryStateRequested(),
+          );
+
+          return;
         }
 
         if (state.status == PasswordRecoveryStatus.success &&
+            state.step == PasswordRecoveryStep.enterNewPassword &&
             state.codeVerification != null) {
           context.push(
             RoutersName.authRoute.newPassword,
             extra: context.read<PasswordRecoveryBloc>(),
+          );
+          context.read<PasswordRecoveryBloc>().add(
+            const ResetPasswordRecoveryStateRequested(),
           );
         }
       },
