@@ -3,6 +3,7 @@ import 'package:taskora/core/extensions/sizes_extension.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/constants/icon_path.dart';
+import '../../../../../core/config/validators/app_validators.dart';
 import '../../../../../core/config/validators/vlaidate_fun.dart';
 import '../../../../../core/config/widgets/custom_input_field/custom_input_field.dart';
 
@@ -33,6 +34,12 @@ class NewPasswordFormSection extends StatelessWidget {
         ),
         context.sizedBoxHeight_16,
         CustomInputFiled(
+          validator: (value) {
+            return AppValidators.confirmPassword(
+              value,
+              originalPassword: controllerPassword.text,
+            );
+          },
           fieldType: FieldType.password,
           text: AppStrings.formConfirmPassword,
           hintText: AppStrings.formHintPassword,

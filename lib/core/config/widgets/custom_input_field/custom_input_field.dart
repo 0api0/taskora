@@ -20,6 +20,7 @@ class CustomInputFiled extends StatefulWidget {
     this.inputFormatters,
     this.fieldType = FieldType.field,
     this.isRequired = true,
+    this.validator,
   });
 
   final String text;
@@ -34,6 +35,7 @@ class CustomInputFiled extends StatefulWidget {
   final bool isPassword;
   final List<TextInputFormatter>? inputFormatters;
   final FieldType fieldType;
+  final String? Function(String?)? validator;
   final bool isRequired;
 
   @override

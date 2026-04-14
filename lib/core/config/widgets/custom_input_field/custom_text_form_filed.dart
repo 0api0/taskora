@@ -43,7 +43,8 @@ class CustomTextFormFiled extends StatelessWidget {
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
-      validator: (value) => validate(value, widget.fieldType),
+      validator:
+          widget.validator ?? (value) => validate(value, widget.fieldType),
       obscureText: widget.isPassword ? obscureText : false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: buildInputDecorationField(
