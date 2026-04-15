@@ -105,7 +105,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         }
       },
       builder: (context, state) {
-        final bool isLoading = state.status == AuthStatus.loading;
         return SignUpViewBodyContent(
           formKey: _formKey,
           controllerName: _controllerName,
@@ -113,9 +112,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           controllerEmail: _controllerEmail,
           controllerPassword: _controllerPassword,
           controllerHourlyRate: _controllerHourlyRate,
-          onCreateAccountPressed: isLoading ? null : _onCreateAccountPressed,
+          onCreateAccountPressed: _onCreateAccountPressed,
           onLoginTap: _onLoginTap,
-          isLoading: isLoading,
         );
       },
     );

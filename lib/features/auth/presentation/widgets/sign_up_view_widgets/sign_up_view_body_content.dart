@@ -16,7 +16,6 @@ class SignUpViewBodyContent extends StatelessWidget {
     required this.controllerHourlyRate,
     this.onCreateAccountPressed,
     required this.onLoginTap,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
@@ -27,7 +26,6 @@ class SignUpViewBodyContent extends StatelessWidget {
   final TextEditingController controllerHourlyRate;
   final VoidCallback? onCreateAccountPressed;
   final VoidCallback onLoginTap;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,6 @@ class SignUpViewBodyContent extends StatelessWidget {
                 SignUpFooterSection(
                   onCreateAccountPressed: onCreateAccountPressed,
                   onLoginTap: onLoginTap,
-                  isLoading: isLoading,
                 ),
               ],
             ),
