@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/router/routers_name.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_bloc.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_state.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/constants/icon_path.dart';
@@ -15,13 +18,11 @@ class ResetPasswordFooterSection extends StatelessWidget {
     required this.formKey,
     required this.controllerEmail,
     this.onContinuePressed,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController controllerEmail;
   final VoidCallback? onContinuePressed;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +43,15 @@ class ResetPasswordFooterSection extends StatelessWidget {
           context.sizedBoxHeight_60,
 
           // -------------- Log in button ----------------
-          CustomButton(
-            text: AppStrings.buttonContinue,
-            onPressed: onContinuePressed,
-            isLoading: isLoading,
+          BlocSelector<PasswordRecoveryBloc, PasswordRecoveryState, bool>(
+            selector: (state) => state.status == PasswordRecoveryStatus.loading,
+            builder: (context, isLoading) {
+              return CustomButton(
+                text: AppStrings.buttonContinue,
+                onPressed: isLoading ? null : onContinuePressed,
+                isLoading: isLoading,
+              );
+            },
           ),
         ],
       ),

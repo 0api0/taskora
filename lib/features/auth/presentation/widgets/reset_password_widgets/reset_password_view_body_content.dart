@@ -13,13 +13,11 @@ class ResetPasswordViewBodyContent extends StatelessWidget {
     required this.formKey,
     required this.controllerEmail,
     this.onContinuePressed,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController controllerEmail;
   final VoidCallback? onContinuePressed;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,6 @@ class ResetPasswordViewBodyContent extends StatelessWidget {
               ResetPasswordFooterSection(
                 formKey: formKey,
                 controllerEmail: controllerEmail,
-                isLoading: isLoading,
                 onContinuePressed: onContinuePressed,
               ),
             ],

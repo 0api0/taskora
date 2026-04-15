@@ -82,12 +82,10 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
         }
       },
       builder: (context, state) {
-        final bool isLoading = state.status == PasswordRecoveryStatus.loading;
         return ResetPasswordViewBodyContent(
           formKey: _formKey,
           controllerEmail: _controllerEmail,
-          isLoading: isLoading,
-          onContinuePressed: isLoading ? null : _onContinuePressed,
+          onContinuePressed: _onContinuePressed,
         );
       },
     );
