@@ -18,6 +18,8 @@ Future<void> setupServiceLocator() async {
 
   // *************** sl - Onboarding *********************
   setupSplashOnboardingDI(sl);
+  // *************** sl - Remote Service Di *********************
   setUpRemoteCoreDi(sl);
+  // *************** sl - Auth *********************
   setUpAuthDI(sl);
 }
