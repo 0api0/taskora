@@ -91,16 +91,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         }
       },
       builder: (context, state) {
-        final bool isLoading = state.status == AuthStatus.loading;
         return LoginViewBodyContent(
           formKey: _formKey,
           controllerEmail: _controllerEmail,
           controllerPassword: _controllerPassword,
           rememberMe: _rememberMe,
           onRememberMeChanged: _onRememberMeChanged,
-          onLoginPressed: isLoading ? null : _onLoginPressed,
+          onLoginPressed: _onLoginPressed,
           onCreateAccountTap: _onCreateAccountTap,
-          isLoading: isLoading,
         );
       },
     );

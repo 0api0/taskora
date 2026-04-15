@@ -15,7 +15,6 @@ class LoginViewBodyContent extends StatelessWidget {
     required this.onRememberMeChanged,
     required this.onLoginPressed,
     required this.onCreateAccountTap,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
@@ -25,7 +24,6 @@ class LoginViewBodyContent extends StatelessWidget {
   final ValueChanged<bool> onRememberMeChanged;
   final VoidCallback? onLoginPressed;
   final VoidCallback onCreateAccountTap;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,6 @@ class LoginViewBodyContent extends StatelessWidget {
                   onCreateAccountTap: onCreateAccountTap,
                   rememberMe: rememberMe,
                   onRememberMeChanged: onRememberMeChanged,
-                  isLoading: isLoading,
                 ),
               ],
             ),
