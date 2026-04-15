@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_bloc.dart';
+import 'package:taskora/features/auth/presentation/bloc/password_recovery/password_recovery_state.dart';
 
 import '../../../../../core/config/constants/app_strings.dart';
 import '../../../../../core/config/constants/color_manager.dart';
@@ -15,14 +18,12 @@ class NewPasswordViewBodyContent extends StatelessWidget {
     required this.controllerPassword,
     required this.controllerConfirmPassword,
     this.onChangePasswordPressed,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController controllerPassword;
   final TextEditingController controllerConfirmPassword;
   final VoidCallback? onChangePasswordPressed;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +52,16 @@ class NewPasswordViewBodyContent extends StatelessWidget {
                 ),
 
                 // ------------ footer --------------
-                CustomButton(
-                  text: AppStrings.buttonChangePassword,
-                  onPressed: onChangePasswordPressed,
-                  isLoading: isLoading,
+                BlocSelector<PasswordRecoveryBloc, PasswordRecoveryState, bool>(
+                  selector: (state) =>
+                      state.status == PasswordRecoveryStatus.loading,
+                  builder: (context, isLoading) {
+                    return CustomButton(
+                      text: AppStrings.buttonChangePassword,
+                      onPressed: isLoading ? null : onChangePasswordPressed,
+                      isLoading: isLoading,
+                    );
+                  },
                 ),
               ],
             ),

@@ -96,13 +96,11 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
         }
       },
       builder: (context, state) {
-        final bool isLoading = state.status == PasswordRecoveryStatus.loading;
         return NewPasswordViewBodyContent(
           formKey: _formKey,
           controllerPassword: _controllerPassword,
           controllerConfirmPassword: _controllerConfirmPassword,
-          onChangePasswordPressed: isLoading ? null : _onChangePasswordPressed,
-          isLoading: isLoading,
+          onChangePasswordPressed: _onChangePasswordPressed,
         );
       },
     );
