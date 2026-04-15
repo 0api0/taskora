@@ -78,7 +78,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
+    return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if ((state.status == AuthStatus.failure ||
                 state.status == AuthStatus.networkFailure) &&
@@ -104,18 +104,16 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           context.pop();
         }
       },
-      builder: (context, state) {
-        return SignUpViewBodyContent(
-          formKey: _formKey,
-          controllerName: _controllerName,
-          controllerUserName: _controllerUserName,
-          controllerEmail: _controllerEmail,
-          controllerPassword: _controllerPassword,
-          controllerHourlyRate: _controllerHourlyRate,
-          onCreateAccountPressed: _onCreateAccountPressed,
-          onLoginTap: _onLoginTap,
-        );
-      },
+      child: SignUpViewBodyContent(
+        formKey: _formKey,
+        controllerName: _controllerName,
+        controllerUserName: _controllerUserName,
+        controllerEmail: _controllerEmail,
+        controllerPassword: _controllerPassword,
+        controllerHourlyRate: _controllerHourlyRate,
+        onCreateAccountPressed: _onCreateAccountPressed,
+        onLoginTap: _onLoginTap,
+      ),
     );
   }
 }

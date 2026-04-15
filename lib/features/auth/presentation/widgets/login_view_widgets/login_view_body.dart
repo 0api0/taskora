@@ -64,7 +64,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
+    return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if ((state.status == AuthStatus.failure ||
                 state.status == AuthStatus.networkFailure) &&
@@ -90,17 +90,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           context.go(RoutersName.splashOnboardingRoute.home);
         }
       },
-      builder: (context, state) {
-        return LoginViewBodyContent(
-          formKey: _formKey,
-          controllerEmail: _controllerEmail,
-          controllerPassword: _controllerPassword,
-          rememberMe: _rememberMe,
-          onRememberMeChanged: _onRememberMeChanged,
-          onLoginPressed: _onLoginPressed,
-          onCreateAccountTap: _onCreateAccountTap,
-        );
-      },
+      child: LoginViewBodyContent(
+        formKey: _formKey,
+        controllerEmail: _controllerEmail,
+        controllerPassword: _controllerPassword,
+        rememberMe: _rememberMe,
+        onRememberMeChanged: _onRememberMeChanged,
+        onLoginPressed: _onLoginPressed,
+        onCreateAccountTap: _onCreateAccountTap,
+      ),
     );
   }
 }
