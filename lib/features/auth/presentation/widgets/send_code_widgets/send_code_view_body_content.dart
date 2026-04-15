@@ -11,13 +11,11 @@ class SendCodeViewBodyContent extends StatelessWidget {
     required this.formKey,
     required this.controllerPinCode,
     this.onVerifyCodePressed,
-    required this.isLoading,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController controllerPinCode;
   final VoidCallback? onVerifyCodePressed;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +33,7 @@ class SendCodeViewBodyContent extends StatelessWidget {
                 // -------------- body ----------------
                 SendCodeFormSection(controllerPinCode: controllerPinCode),
                 // -------------- Footer ----------------
-                SendCodeFooterSection(
-                  onPressed: onVerifyCodePressed,
-                  isLoading: isLoading,
-                ),
+                SendCodeFooterSection(onPressed: onVerifyCodePressed),
               ],
             ),
           ),

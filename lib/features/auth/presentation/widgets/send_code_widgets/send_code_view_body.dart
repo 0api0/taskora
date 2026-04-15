@@ -85,12 +85,10 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
         }
       },
       builder: (context, state) {
-        final isLoading = state.status == PasswordRecoveryStatus.loading;
         return SendCodeViewBodyContent(
-          isLoading: isLoading,
           controllerPinCode: _controllerPinCode,
           formKey: _formKey,
-          onVerifyCodePressed: isLoading ? null : _onVerifyCodePressed,
+          onVerifyCodePressed: _onVerifyCodePressed,
         );
       },
     );
