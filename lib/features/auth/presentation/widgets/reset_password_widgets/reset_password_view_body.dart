@@ -45,7 +45,7 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
+    return BlocListener<PasswordRecoveryBloc, PasswordRecoveryState>(
       listenWhen: (previous, current) =>
           previous.status != current.status || previous.step != current.step,
       listener: (context, state) {
@@ -81,13 +81,11 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
           );
         }
       },
-      builder: (context, state) {
-        return ResetPasswordViewBodyContent(
-          formKey: _formKey,
-          controllerEmail: _controllerEmail,
-          onContinuePressed: _onContinuePressed,
-        );
-      },
+      child: ResetPasswordViewBodyContent(
+        formKey: _formKey,
+        controllerEmail: _controllerEmail,
+        onContinuePressed: _onContinuePressed,
+      ),
     );
   }
 }

@@ -58,7 +58,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
+    return BlocListener<PasswordRecoveryBloc, PasswordRecoveryState>(
       listenWhen: (previous, current) =>
           previous.status != current.status || previous.step != current.step,
       listener: (context, state) {
@@ -95,14 +95,12 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
           context.go(RoutersName.authRoute.login);
         }
       },
-      builder: (context, state) {
-        return NewPasswordViewBodyContent(
-          formKey: _formKey,
-          controllerPassword: _controllerPassword,
-          controllerConfirmPassword: _controllerConfirmPassword,
-          onChangePasswordPressed: _onChangePasswordPressed,
-        );
-      },
+      child: NewPasswordViewBodyContent(
+        formKey: _formKey,
+        controllerPassword: _controllerPassword,
+        controllerConfirmPassword: _controllerConfirmPassword,
+        onChangePasswordPressed: _onChangePasswordPressed,
+      ),
     );
   }
 }

@@ -45,7 +45,7 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PasswordRecoveryBloc, PasswordRecoveryState>(
+    return BlocListener<PasswordRecoveryBloc, PasswordRecoveryState>(
       listenWhen: (previous, current) =>
           previous.status != current.status || previous.step != current.step,
       listener: (context, state) async {
@@ -84,13 +84,11 @@ class _SendCodeViewBodyState extends State<SendCodeViewBody> {
           );
         }
       },
-      builder: (context, state) {
-        return SendCodeViewBodyContent(
-          controllerPinCode: _controllerPinCode,
-          formKey: _formKey,
-          onVerifyCodePressed: _onVerifyCodePressed,
-        );
-      },
+      child: SendCodeViewBodyContent(
+        controllerPinCode: _controllerPinCode,
+        formKey: _formKey,
+        onVerifyCodePressed: _onVerifyCodePressed,
+      ),
     );
   }
 }
