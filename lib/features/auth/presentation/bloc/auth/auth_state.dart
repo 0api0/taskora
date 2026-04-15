@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-
+import 'package:equatable/equatable.dart';
 import '../../../domain/entities/auth_session_entity.dart';
 import '../../../domain/entities/user_full_data_entity.dart';
 
@@ -14,7 +14,7 @@ enum AuthStatus {
 }
 
 @immutable
-class AuthState {
+class AuthState extends Equatable {
   const AuthState({
     this.status = AuthStatus.initial,
     this.message,
@@ -52,4 +52,16 @@ class AuthState {
           : userFullData ?? this.userFullData,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    status,
+    message,
+    validationErrors,
+    session,
+    userFullData,
+  ];
+
+  @override
+  bool get stringify => true;
 }

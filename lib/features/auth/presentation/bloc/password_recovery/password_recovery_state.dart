@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-
+import 'package:equatable/equatable.dart';
 import '../../../domain/entities/code_verification_entity.dart';
 import '../../../domain/entities/forgot_password_verification_entity.dart';
 
@@ -14,7 +14,7 @@ enum PasswordRecoveryStatus {
 enum PasswordRecoveryStep { enterEmail, enterCode, enterNewPassword, completed }
 
 @immutable
-class PasswordRecoveryState {
+class PasswordRecoveryState extends Equatable {
   const PasswordRecoveryState({
     this.status = PasswordRecoveryStatus.initial,
     this.message,
@@ -51,4 +51,16 @@ class PasswordRecoveryState {
           : (codeVerificationEntity ?? codeVerification),
     );
   }
+
+  @override
+  List<Object?> get props => [
+    step,
+    status,
+    message,
+    forgotPasswordVerification,
+    codeVerification,
+  ];
+
+  @override
+  bool get stringify => true;
 }
