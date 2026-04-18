@@ -60,7 +60,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ),
       );
     });
-    countLog++;
   }
 
   Future<void> _onRegisterRequested(event, emit) async {
@@ -127,6 +126,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     }
     if (failure is UnauthorizedFailure) {
+      countLog++;
       return state.copyWith(
         status: AuthStatus.unauthenticated,
         message: failure.message,
