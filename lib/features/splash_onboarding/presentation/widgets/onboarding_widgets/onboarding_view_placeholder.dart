@@ -20,39 +20,36 @@ class OnboardingPagePlaceholder extends StatelessWidget {
         ? ColorManager.backgroundPrimaryColor
         : ColorManager.textHintColor;
 
-    return Padding(
-      padding: context.paddingScaffold.copyWith(top: 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Image
-          SizedBox(
-            height: 260,
-            child: Image.asset(
-              onboardingPageEntity.imagePath,
-              fit: BoxFit.contain,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // Image
+        SizedBox(
+          height: 260,
+          child: Image.asset(
+            onboardingPageEntity.imagePath,
+            fit: BoxFit.contain,
           ),
+        ),
 
-          context.sizedBoxHeight_10,
+        context.sizedBoxHeight_10,
 
-          // Title
-          Text(
-            onboardingPageEntity.title,
-            textAlign: TextAlign.center,
-            style: context.bold.copyWith(color: ColorManager.textDarkColor),
-          ),
+        // Title
+        Text(
+          onboardingPageEntity.title,
+          textAlign: TextAlign.center,
+          style: context.bold.copyWith(color: ColorManager.textDarkColor),
+        ),
 
-          context.sizedBoxHeight_10,
+        context.sizedBoxHeight_10,
 
-          // Description
-          Text(
-            onboardingPageEntity.description,
-            textAlign: TextAlign.center,
-            style: context.regular.copyWith(color: descColor),
-          ),
-        ],
-      ),
+        // Description
+        Text(
+          onboardingPageEntity.description,
+          textAlign: TextAlign.center,
+          style: context.regular.copyWith(color: descColor),
+        ),
+      ],
     );
   }
 }

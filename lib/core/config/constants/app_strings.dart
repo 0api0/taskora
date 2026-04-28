@@ -50,7 +50,7 @@ class AppStrings {
   static const String titleCreateAAccount = 'Create a Account';
   static const String titleEnterYourEmailAddress = 'Enter your email address';
   static const String titleEnterCode = 'Enter Code';
-  static const String titleGreatNewPassword = 'Great new password';
+  static const String titleCreateNewPassword = 'Create new password';
   static const String titleProfile = 'Profile';
   static const String titleProjects = 'Projects';
   static const String titleProjectDetails = 'Project Details';
@@ -67,6 +67,8 @@ class AppStrings {
   static const String formHintPassword = 'xxxxxxxxx';
   static const String formName = 'Name';
   static const String formHintName = 'Enter Your Name';
+  static const String formUserName = 'User Name';
+  static const String formHintUserName = 'User Name';
   static const String formRememberMe = 'Remember me';
   static const String formCreateAccountButton = ' Create an account';
   static const String formCreateAccount = 'Don\'t have an account?';
@@ -126,7 +128,7 @@ class AppStrings {
       'Our servers are having trouble right now';
   static const String messgaesLoginFailed = 'login failed';
   static const String messgaesSubLoginFailed =
-      'Email is incorrect . Please double -check your credentials . ';
+      'Login is incorrect . Please double -check your credentials . ';
 
   // Welcome & start & create
   static const String messgaesWelcomeBack = 'Welcome Back ! 👋';
@@ -175,4 +177,14 @@ class AppStrings {
   static const String categoryDEADLINE = 'DEADLINE';
   static const String categoryOverview = 'Overview';
   static const String categoryTASKSTATUS = 'TASK STATUS';
+
+  // Validate
+  static const String validateHourlyRate = 'Hourly Rate';
+  static const String validatePassword = 'Password';
+  static const String validateEmail = 'Email';
+  static const String validateName = 'Name';
+  static const String validateField = 'Field';
+  static const String validatePinCode = 'Pin Code';
+  static const String validateConfirmPasswordNotMatch =
+      'Passwords do not match';
 }

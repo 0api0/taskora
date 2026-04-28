@@ -44,6 +44,8 @@ class IconPath {
   static const String passwordLock = 'assets/icons/mynaui_lock-password.svg';
   static const String profile = 'assets/icons/iconamoon_profile.svg';
   static const String hide = 'assets/icons/Frame 427319619.svg';
+  static const String unHide = 'assets/icons/svgexport-4 (1).svg';
   static const String dolllarEmoji =
       'assets/icons/streamline-emojis_dollar-banknote.svg';
+  static const String arrowBackLeft = 'assets/icons/ep_arrow-left-bold.svg';
 }

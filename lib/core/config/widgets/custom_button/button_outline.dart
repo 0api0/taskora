@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../../constants/color_manager.dart';
 
 class ButtonOutLine extends StatelessWidget {
-  const ButtonOutLine({super.key, required this.text, this.onPressed});
+  const ButtonOutLine({
+    super.key,
+    required this.text,
+    this.onPressed,
+    this.isLoading = false,
+  });
 
   final String text;
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +25,19 @@ class ButtonOutLine extends StatelessWidget {
           borderRadius: BorderRadiusGeometry.circular(4),
         ),
       ),
-      child: Text(
-        text,
-        style: const TextStyle(color: ColorManager.primaryColorApp),
-      ),
+      child: isLoading
+          ? const SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: ColorManager.primaryColorApp,
+              ),
+            )
+          : Text(
+              text,
+              style: const TextStyle(color: ColorManager.primaryColorApp),
+            ),
     );
   }
 }

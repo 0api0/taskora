@@ -1,6 +1,11 @@
-class StorageKeys {
+abstract final class StorageKeys {
   // OnBoarding
   static const String onboardingCompleted = 'startup.onboarding_completed';
 
+  // auth
+  static const String authToken = 'auth.token';
+  static const String userEmail = 'auth.user_email';
+  static const String userName = 'auth.user_userName';
+  static const String rememberMe = 'auth.remember_me';
   //TODO: others keys ....
 }

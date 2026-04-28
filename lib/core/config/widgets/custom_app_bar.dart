@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:taskora/core/config/constants/icon_path.dart';
 import 'package:taskora/core/extensions/text_style_extension.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.showIcon = true});
 
   final String title;
+  final bool? showIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +20,19 @@ class CustomAppBar extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new, size: 20),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
+            showIcon!
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      icon: SvgPicture.asset(
+                        IconPath.arrowBackLeft,
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () => context.pop(),
+                    ),
+                  )
+                : const SizedBox(),
             Text(title, style: context.bold),
           ],
         ),

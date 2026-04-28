@@ -1,26 +1,17 @@
 import 'package:go_router/go_router.dart';
+import 'package:taskora/core/router/feature_router/splash_onboardig_routes.dart';
 import 'package:taskora/core/router/routers_name.dart';
-import 'package:taskora/features/splash_onboarding/presentation/views/splash_view.dart';
 
 import '../../features/splash_onboarding/presentation/views/error_view_test.dart';
-import '../../features/splash_onboarding/presentation/views/home_test.dart';
-import '../../features/splash_onboarding/presentation/views/onboarding_view.dart';
+import 'feature_router/auth_routes.dart';
 
 GoRouter goRouter = GoRouter(
-  initialLocation: RoutersName.splash,
+  initialLocation: RoutersName.splashOnboardingRoute.splash,
   routes: [
-    GoRoute(
-      path: RoutersName.splash,
-      builder: (context, state) => const SplashView(),
-    ),
-    GoRoute(
-      path: RoutersName.onboarding,
-      builder: (context, state) => const OnboardingView(),
-    ),
-    GoRoute(
-      path: RoutersName.home,
-      builder: (context, state) => const HomeTest(),
-    ),
+    //----------------- Feature Splash onboarding routers -----------------
+    ...splashOnboarding,
+    //----------------- Feature Auth routers  -----------------
+    ...authRoutes,
   ],
   errorBuilder: (context, state) => const ErrorViewTest(),
 );
