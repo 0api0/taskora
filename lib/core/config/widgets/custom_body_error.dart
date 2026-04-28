@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/color_manager.dart';
+import 'package:taskora/core/config/widgets/custom_button/custom_button.dart';
+import 'package:taskora/core/extensions/sizes_extension.dart';
 import 'package:taskora/core/config/constants/app_sizes.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 import 'package:taskora/core/config/widgets/custom_button/custom_button.dart';
@@ -31,16 +34,21 @@ class CustomBodyError extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(image, width: 100, height: 100),
+        context.sizedBoxHeight_22,
         const SizedBox(height: AppSizes.spaceMedium),
         Text(
           title,
           style: context.bold.copyWith(color: ColorManager.textDarkColor),
         ),
+        context.sizedBoxHeight_4,
         const SizedBox(height: AppSizes.spaceSmallX),
         Text(
           subTitle,
           style: context.regular.copyWith(color: ColorManager.textHintColor),
         ),
+        context.sizedBoxHeight_36,
+        CustomButton(text: textButton, onPressed: onPressed),
+        context.sizedBoxHeight_8,
         const SizedBox(height: AppSizes.spaceLarge),
         CustomButton(text: textButton, onPressed: onPressed),
         const SizedBox(height: AppSizes.spaceSmall),
